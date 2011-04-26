@@ -39,6 +39,7 @@ convar_t	*host_framerate;
 convar_t	*con_gamemaps;
 
 static int num_decals;
+BOOL console_ui = 1;
 
 // these cvars will be duplicated on each client across network
 int Host_ServerState( void )
@@ -568,6 +569,11 @@ void Host_InitCommon( const char *progname, qboolean bChangeGame, BOOL dedicated
 			else host.developer++; // -dev == 1, -dev -console == 2
 		}
 		else host.developer++; // -dev == 1, -dev -console == 2
+	}
+
+	if( Sys_CheckParm( "-noui" ))
+	{
+		console_ui = 0;
 	}
 
 	host.type = HOST_NORMAL; // predict state

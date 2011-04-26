@@ -33,6 +33,8 @@ WIN32 CONSOLE
 #define SYSCONSOLE		"Sing Console"
 #define COMMAND_HISTORY	64	// system console keep more commands than game console
 
+extern BOOL console_ui;
+
 typedef struct
 {
 	char		title[64];
@@ -228,6 +230,12 @@ void Con_WinPrint( const char *pMsg )
 {
 	size_t	len = Q_strlen( pMsg );
 
+	if(console_ui == 0)
+	{
+		WriteConsoleA(GetStdHandle(STD_OUTPUT_HANDLE), pMsg, strlen(pMsg), NULL, NULL );
+		return;
+	}
+
 	// replace selection instead of appending if we're overflowing
 	s_wcd.outLen += len;
 	if( s_wcd.outLen >= 0x7fff )
@@ -261,6 +269,12 @@ void Con_CreateConsole( void )
 	int	DEDSTYLE = WS_POPUPWINDOW | WS_CAPTION;
 	int	CONSTYLE = WS_CHILD|WS_VISIBLE|WS_VSCROLL|WS_BORDER|WS_EX_CLIENTEDGE|ES_LEFT|ES_MULTILINE|ES_AUTOVSCROLL|ES_READONLY;
 	string	FontName;
+
+	if( !console_ui ) 
+	{
+		AllocConsole();
+		return;
+	}
 
 	wc.style         = 0;
 	wc.lpfnWndProc   = (WNDPROC)Con_WndProc;
@@ -389,6 +403,8 @@ destroy win32 console
 */
 void Con_DestroyConsole( void )
 {
+	if(console_ui == 0) return;
+
 	// last text message into console or log 
 	MsgDev( D_NOTE, "Sys_FreeLibrary: Unloading engine.dll\n" );
 
