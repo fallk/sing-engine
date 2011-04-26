@@ -129,7 +129,7 @@
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
-				CommandLine="copy $(TargetPath)l ..\..\engine.dll&#x0D;&#x0A;"
+				CommandLine="copy $(TargetPath) ..\..\engine.dll&#x0D;&#x0A;"
 				Outputs="..\..\engine.dll"
 			/>
 			<Tool
