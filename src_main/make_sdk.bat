@@ -1,26 +1,27 @@
 @echo off
 color 5A
 echo 			 XashXT Group 2010 (C)
-echo 			   Create Xash3D SDK
+echo			Sing Project 2011 (c)
+echo 			   Create Sing SDK
 echo.
 
-if not exist D:\Xash3D\src_main\xash_sdk/ mkdir D:\Xash3D\src_main\xash_sdk\
-if not exist D:\Xash3D\src_main\xash_sdk\engine/ mkdir D:\Xash3D\src_main\xash_sdk\engine\
-if not exist D:\Xash3D\src_main\xash_sdk\common/ mkdir D:\Xash3D\src_main\xash_sdk\common\
-if not exist D:\Xash3D\src_main\xash_sdk\mainui/ mkdir D:\Xash3D\src_main\xash_sdk\mainui\
-if not exist D:\Xash3D\src_main\xash_sdk\mainui\legacy/ mkdir D:\Xash3D\src_main\xash_sdk\mainui\legacy
-if not exist D:\Xash3D\src_main\xash_sdk\utils/ mkdir D:\Xash3D\src_main\xash_sdk\utils\
-if not exist D:\Xash3D\src_main\xash_sdk\utils\vgui/ mkdir D:\Xash3D\src_main\xash_sdk\utils\vgui
-if not exist D:\Xash3D\src_main\xash_sdk\utils\vgui\include/ mkdir D:\Xash3D\src_main\xash_sdk\utils\vgui\include
-if not exist D:\Xash3D\src_main\xash_sdk\utils\vgui\lib/ mkdir D:\Xash3D\src_main\xash_sdk\utils\vgui\lib
-if not exist D:\Xash3D\src_main\xash_sdk\utils\vgui\lib\win32_vc6/ mkdir D:\Xash3D\src_main\xash_sdk\utils\vgui\lib\win32_vc6
-if not exist D:\Xash3D\src_main\xash_sdk\game_launch/ mkdir D:\Xash3D\src_main\xash_sdk\game_launch\
-if not exist D:\Xash3D\src_main\xash_sdk\cl_dll/ mkdir D:\Xash3D\src_main\xash_sdk\cl_dll\
-if not exist D:\Xash3D\src_main\xash_sdkcl_dll\hl/ mkdir D:\Xash3D\src_main\xash_sdk\cl_dll\hl\
-if not exist D:\Xash3D\src_main\xash_sdk\dlls/ mkdir D:\Xash3D\src_main\xash_sdk\dlls\
-if not exist D:\Xash3D\src_main\xash_sdk\dlls\wpn_shared/ mkdir D:\Xash3D\src_main\xash_sdk\dlls\wpn_shared\
-if not exist D:\Xash3D\src_main\xash_sdk\game_shared/ mkdir D:\Xash3D\src_main\xash_sdk\game_shared\
-if not exist D:\Xash3D\src_main\xash_sdk\pm_shared/ mkdir D:\Xash3D\src_main\xash_sdk\pm_shared\
+if not exist xash_sdk mkdir xash_sdk\
+if not exist xash_sdk\engine mkdir xash_sdk\engine\
+if not exist xash_sdk\common mkdir xash_sdk\common\
+if not exist xash_sdk\mainui mkdir xash_sdk\mainui\
+if not exist xash_sdk\mainui\legacy mkdir xash_sdk\mainui\legacy
+if not exist xash_sdk\utils mkdir xash_sdk\utils\
+if not exist xash_sdk\utils\vgui mkdir xash_sdk\utils\vgui
+if not exist xash_sdk\utils\vgui\include mkdir xash_sdk\utils\vgui\include
+if not exist xash_sdk\utils\vgui\lib mkdir xash_sdk\utils\vgui\lib
+if not exist xash_sdk\utils\vgui\lib\win32_vc6 mkdir xash_sdk\utils\vgui\lib\win32_vc6
+if not exist xash_sdk\game_launch mkdir xash_sdk\game_launch\
+if not exist xash_sdk\cl_dll mkdir xash_sdk\cl_dll\
+if not exist xash_sdkcl_dll\hl mkdir xash_sdk\cl_dll\hl\
+if not exist xash_sdk\dlls mkdir xash_sdk\dlls\
+if not exist xash_sdk\dlls\wpn_shared mkdir xash_sdk\dlls\wpn_shared\
+if not exist xash_sdk\game_shared mkdir xash_sdk\game_shared\
+if not exist xash_sdk\pm_shared mkdir xash_sdk\pm_shared\
 @copy /Y engine\*.h xash_sdk\engine\*.h
 @copy /Y game_launch\*.* xash_sdk\game_launch\*.*
 @copy /Y mainui\*.* xash_sdk\mainui\*.*
@@ -34,10 +35,10 @@ if not exist D:\Xash3D\src_main\xash_sdk\pm_shared/ mkdir D:\Xash3D\src_main\xas
 @copy /Y utils\vgui\lib\win32_vc6\*.* xash_sdk\utils\vgui\lib\win32_vc6\*.*
 @copy /Y game_shared\*.* xash_sdk\game_shared\*.*
 @copy /Y pm_shared\*.* xash_sdk\pm_shared\*.*
-@copy /Y xash_sdk.dsw xash_sdk\xash_sdk.dsw
+@copy /Y xash_sdk.sln xash_sdk\xash_sdk.sln
 echo 			     Prepare OK!
 echo 		     Please wait: creating SDK in progress
-C:\Progra~1\WinRar\rar a xash_sdk -dh -k -r -s -df -m5 @xash_sdk.lst >>makesdk.log
+"C:\Program Files (x86)\WinRar\rar" a xash_sdk -dh -k -r -s -df -m5 @xash_sdk.lst >>makesdk.log
 if errorlevel 1 goto error
 if errorlevel 0 goto ok
 :ok
