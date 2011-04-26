@@ -25,7 +25,7 @@ extern "C" {
 #include <time.h>
 #include <windows.h>
 
-#define MSGBOX( x )		MessageBox( NULL, x, "Xash Error", MB_OK|MB_SETFOREGROUND|MB_ICONSTOP )
+#define MSGBOX( x )		MessageBox( NULL, x, "Sing Error", MB_OK|MB_SETFOREGROUND|MB_ICONSTOP )
 
 // basic typedefs
 typedef int		sound_t;

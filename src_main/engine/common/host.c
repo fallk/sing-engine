@@ -21,7 +21,7 @@ GNU General Public License for more details.
 #include "input.h"
 
 static const char *show_credits = "\n\n\n\n\tCopyright XashXT Group %s ©\n\t\
-          All Rights Reserved\n\n\t           Visit www.xash.ru\n";
+          All Rights Reserved\n\n\t           Visit hlfx.ru/forum\n";
 
 typedef void (*pfnChangeGame)( const char *progname );
 
@@ -587,10 +587,12 @@ void Host_InitCommon( const char *progname, qboolean bChangeGame )
 	}
 	else Q_strncpy( SI.ModuleName, progname, sizeof( SI.ModuleName )); 
 
+	if( Sys_CheckParm( "-dedicated" )) host.type = HOST_DEDICATED;
+
 	if( host.type == HOST_DEDICATED )
 	{
 		// check for duplicate dedicated server
-		host.hMutex = CreateMutex( NULL, 0, "Xash Dedicated Server" );
+		host.hMutex = CreateMutex( NULL, 0, "Sing Dedicated Server" );
 		if( !host.hMutex )
 		{
 			MSGBOX( "Dedicated server already running" );
@@ -601,7 +603,7 @@ void Host_InitCommon( const char *progname, qboolean bChangeGame )
 		Sys_MergeCommandLine( GetCommandLine( ));
 
 		CloseHandle( host.hMutex );
-		host.hMutex = CreateSemaphore( NULL, 0, 1, "Xash Dedicated Server" );
+		host.hMutex = CreateSemaphore( NULL, 0, 1, "Sing Dedicated Server" );
 		if( host.developer < 3 ) host.developer = 3; // otherwise we see empty console
 		host.change_game = false;
 	}
@@ -806,4 +808,11 @@ void EXPORT Host_Shutdown( void )
 
 	// restore filter	
 	if( host.oldFilter ) SetUnhandledExceptionFilter( host.oldFilter );
+}
+
+// main DLL entry point
+BOOL WINAPI DllMain( HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved )
+{
+	hCurrent = hinstDLL;
+	return TRUE;
 }

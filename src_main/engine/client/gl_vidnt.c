@@ -24,7 +24,7 @@ GNU General Public License for more details.
 #define WINDOW_STYLE	(WS_OVERLAPPED|WS_BORDER|WS_SYSMENU|WS_CAPTION|WS_VISIBLE)
 #define WINDOW_EX_STYLE	(0)
 #define GL_DRIVER_OPENGL	"OpenGL32"
-#define WINDOW_NAME		"Xash Window" // Half-Life
+#define WINDOW_NAME		"Sing Window" // Half-Life
 
 convar_t	*renderinfo;
 convar_t	*gl_allow_software;
