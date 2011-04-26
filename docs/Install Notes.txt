@@ -5,10 +5,10 @@
 
 0. Create folder e.g. D:\Xash3D
 1. Copy into this folder all Half-Life WON version data (folder 'valve') and vgui.dll from rootfolder
-2. Copy (with overwrite some files) all data from archive to our root folder
-3. Copy folder 'valve' and vgui.dll from xash_extras.rar if you have problems with launch it
+2. Copy (with overwriting all files) all data from archive to your xash3d folder
+3. Copy folder 'valve' and vgui.dll from xash_extras.rar if you have problems with launching.
 4. Enjoy!
 
-About all found bugs please report to our forum www.hlfx.ru/forum
+About all found bugs please report to our forum: www.hlfx.ru/forum
 
 								XashXT Group 2011

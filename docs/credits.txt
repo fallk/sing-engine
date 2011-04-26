@@ -3,9 +3,12 @@ Thanks to:
 ID Software
 Valve LLC
 
-Crazy Russian for HL-Style menu buttons code and animation
-adamix for scrollbars code in menu
-HAWK for translate features.txt on english
+Crazy Russian for HL-Style menu buttons code and animations.
+adamix for scrollbars code in menu.
+HAWK for translating features.txt to english language.
+XaeroX for project hosting and for technical and moral support :)
+FiEctro for testing and moral support.
+
 
 Xash3D using some parts of:
 
