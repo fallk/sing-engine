@@ -527,7 +527,7 @@ static void Host_Crash_f( void )
 	*(int *)0 = 0xffffffff;
 }
 
-void Host_InitCommon( const char *progname, qboolean bChangeGame )
+void Host_InitCommon( const char *progname, qboolean bChangeGame, BOOL dedicated )
 {
 	MEMORYSTATUS	lpBuffer;
 	char		dev_level[4];
@@ -588,6 +588,7 @@ void Host_InitCommon( const char *progname, qboolean bChangeGame )
 	else Q_strncpy( SI.ModuleName, progname, sizeof( SI.ModuleName )); 
 
 	if( Sys_CheckParm( "-dedicated" )) host.type = HOST_DEDICATED;
+	if( dedicated ) host.type = HOST_DEDICATED;
 
 	if( host.type == HOST_DEDICATED )
 	{
@@ -668,13 +669,13 @@ void Host_FreeCommon( void )
 Host_Main
 =================
 */
-int EXPORT Host_Main( const char *progname, int bChangeGame, pfnChangeGame func )
+int EXPORT Host_Main( const char *progname, int bChangeGame, pfnChangeGame func, BOOL dedicated )
 {
 	static double	oldtime, newtime;
 
 	pChangeGame = func;
 
-	Host_InitCommon( progname, bChangeGame );
+	Host_InitCommon( progname, bChangeGame, dedicated );
 
 	// init commands and vars
 	if( host.developer >= 3 )

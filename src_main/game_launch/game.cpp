@@ -18,7 +18,7 @@ GNU General Public License for more details.
 #define GAME_PATH	"valve"	// default dir to start from
 
 typedef void (*pfnChangeGame)( const char *progname );
-typedef int (*pfnInit)( const char *progname, int bChangeGame, pfnChangeGame func );
+typedef int (*pfnInit)( const char *progname, int bChangeGame, pfnChangeGame func, bool dedicated );
 typedef void (*pfnShutdown)( void );
 
 pfnInit Host_Main;
@@ -28,7 +28,7 @@ HINSTANCE	hEngine;
 
 void Sys_Error( const char *errorstring )
 {
-	MessageBox( NULL, errorstring, "Xash Error", MB_OK|MB_SETFOREGROUND|MB_ICONSTOP );
+	MessageBox( NULL, errorstring, "Sing Error", MB_OK|MB_SETFOREGROUND|MB_ICONSTOP );
 	exit( 1 );
 }
 
@@ -62,13 +62,19 @@ void Sys_ChangeGame( const char *progname )
 
 	Sys_UnloadEngine ();
 	Sys_LoadEngine ();
-	
-	Host_Main( szGameDir, TRUE, ( Host_Shutdown != NULL ) ? Sys_ChangeGame : NULL );
+#ifdef DEDICATED
+	Host_Main( szGameDir, TRUE, ( Host_Shutdown != NULL ) ? Sys_ChangeGame : NULL, true );
+#else
+	Host_Main( szGameDir, TRUE, ( Host_Shutdown != NULL ) ? Sys_ChangeGame : NULL, false );
+#endif
 }
 
 int APIENTRY WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow )
 {
 	Sys_LoadEngine();
-
-	return Host_Main( GAME_PATH, FALSE, ( Host_Shutdown != NULL ) ? Sys_ChangeGame : NULL );
+#ifdef DEDICATED
+	return Host_Main( GAME_PATH, FALSE, ( Host_Shutdown != NULL ) ? Sys_ChangeGame : NULL, true );
+#else
+	return Host_Main( GAME_PATH, FALSE, ( Host_Shutdown != NULL ) ? Sys_ChangeGame : NULL, false );
+#endif
 }
