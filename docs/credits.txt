@@ -1,0 +1,18 @@
+Thanks to:
+
+ID Software
+Valve LLC
+
+Crazy Russian for HL-Style menu buttons code and animation
+adamix for scrollbars code in menu
+HAWK for translate features.txt on english
+
+Xash3D using some parts of:
+
+Quake 1 (Id Software)
+Quake 2 (Id Software)
+Quake 3 (Id Software)
+Half-Life (Valve Software)
+Darkplaces (Darkplaces Team)
+Quake 2 Evolved (Team Blur)
+AVIKit (by randomnine)

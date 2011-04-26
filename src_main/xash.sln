@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hl", "dlls\hl.vcproj", "{A23A50A9-6349-4D81-AD0C-EC6FCD4EFE2D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cl_dll", "cl_dll\cl_dll.vcproj", "{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mainui", "mainui\mainui.vcproj", "{D512F31D-5A53-4947-B3FA-25728BD8B053}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "engine", "engine\engine.vcproj", "{3EBA0E12-F1F7-4775-A19F-A0FC68548ACA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game_launch\game.vcproj", "{754B23CD-60CD-426D-A73E-E60A169BB945}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine Stuff", "Engine Stuff", "{95414974-4ACA-41C2-AEA0-C267F87CBC74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Half-Life", "Half-Life", "{B8643901-A300-4CE5-8A92-6BD4B0D0FE6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{77CDB05B-A067-4844-9E3C-4DDDDEF66D20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Profile|Win32 = Profile|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A23A50A9-6349-4D81-AD0C-EC6FCD4EFE2D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A23A50A9-6349-4D81-AD0C-EC6FCD4EFE2D}.Debug|Win32.Build.0 = Debug|Win32
+		{A23A50A9-6349-4D81-AD0C-EC6FCD4EFE2D}.Profile|Win32.ActiveCfg = Profile|Win32
+		{A23A50A9-6349-4D81-AD0C-EC6FCD4EFE2D}.Profile|Win32.Build.0 = Profile|Win32
+		{A23A50A9-6349-4D81-AD0C-EC6FCD4EFE2D}.Release|Win32.ActiveCfg = Release|Win32
+		{A23A50A9-6349-4D81-AD0C-EC6FCD4EFE2D}.Release|Win32.Build.0 = Release|Win32
+		{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23}.Debug|Win32.Build.0 = Debug|Win32
+		{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23}.Profile|Win32.ActiveCfg = Release|Win32
+		{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23}.Profile|Win32.Build.0 = Release|Win32
+		{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23}.Release|Win32.ActiveCfg = Release|Win32
+		{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23}.Release|Win32.Build.0 = Release|Win32
+		{D512F31D-5A53-4947-B3FA-25728BD8B053}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D512F31D-5A53-4947-B3FA-25728BD8B053}.Debug|Win32.Build.0 = Debug|Win32
+		{D512F31D-5A53-4947-B3FA-25728BD8B053}.Profile|Win32.ActiveCfg = Release|Win32
+		{D512F31D-5A53-4947-B3FA-25728BD8B053}.Profile|Win32.Build.0 = Release|Win32
+		{D512F31D-5A53-4947-B3FA-25728BD8B053}.Release|Win32.ActiveCfg = Release|Win32
+		{D512F31D-5A53-4947-B3FA-25728BD8B053}.Release|Win32.Build.0 = Release|Win32
+		{3EBA0E12-F1F7-4775-A19F-A0FC68548ACA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3EBA0E12-F1F7-4775-A19F-A0FC68548ACA}.Debug|Win32.Build.0 = Debug|Win32
+		{3EBA0E12-F1F7-4775-A19F-A0FC68548ACA}.Profile|Win32.ActiveCfg = Release|Win32
+		{3EBA0E12-F1F7-4775-A19F-A0FC68548ACA}.Profile|Win32.Build.0 = Release|Win32
+		{3EBA0E12-F1F7-4775-A19F-A0FC68548ACA}.Release|Win32.ActiveCfg = Release|Win32
+		{3EBA0E12-F1F7-4775-A19F-A0FC68548ACA}.Release|Win32.Build.0 = Release|Win32
+		{754B23CD-60CD-426D-A73E-E60A169BB945}.Debug|Win32.ActiveCfg = Release|Win32
+		{754B23CD-60CD-426D-A73E-E60A169BB945}.Debug|Win32.Build.0 = Release|Win32
+		{754B23CD-60CD-426D-A73E-E60A169BB945}.Profile|Win32.ActiveCfg = Release|Win32
+		{754B23CD-60CD-426D-A73E-E60A169BB945}.Profile|Win32.Build.0 = Release|Win32
+		{754B23CD-60CD-426D-A73E-E60A169BB945}.Release|Win32.ActiveCfg = Release|Win32
+		{754B23CD-60CD-426D-A73E-E60A169BB945}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3EBA0E12-F1F7-4775-A19F-A0FC68548ACA} = {95414974-4ACA-41C2-AEA0-C267F87CBC74}
+		{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23} = {B8643901-A300-4CE5-8A92-6BD4B0D0FE6B}
+		{A23A50A9-6349-4D81-AD0C-EC6FCD4EFE2D} = {B8643901-A300-4CE5-8A92-6BD4B0D0FE6B}
+		{754B23CD-60CD-426D-A73E-E60A169BB945} = {77CDB05B-A067-4844-9E3C-4DDDDEF66D20}
+		{D512F31D-5A53-4947-B3FA-25728BD8B053} = {77CDB05B-A067-4844-9E3C-4DDDDEF66D20}
+	EndGlobalSection
+EndGlobal

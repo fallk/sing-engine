@@ -1,0 +1,14 @@
+//=======================================================================
+//		Xash3D - Custom Gold Source build from scratch.
+//		    Version. 0.85	Build 1540
+//=======================================================================
+
+0. Create folder e.g. D:\Xash3D
+1. Copy into this folder all Half-Life WON version data (folder 'valve') and vgui.dll from rootfolder
+2. Copy (with overwrite some files) all data from archive to our root folder
+3. Copy folder 'valve' and vgui.dll from xash_extras.rar if you have problems with launch it
+4. Enjoy!
+
+About all found bugs please report to our forum www.hlfx.ru/forum
+
+								XashXT Group 2011

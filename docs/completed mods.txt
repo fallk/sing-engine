@@ -1,0 +1,25 @@
+These following mods is succesfully completed under Xash3D engine:
+
+Point Of View
+Snark Planet (demo)
+Rumble
+Lost In Black Mesa (HLFX version)
+Ispitatel
+Ispitatel II
+Ispitatel IV
+HLFX Single (demo)
+Blue-Shift
+Cleaner's Adventures
+Uplink
+Spirit 1.0, 1.3, 1.7 (demo maps)
+HLFX 0.5 (demo maps)
+Azure Sheep
+Paranoia
+Retribution
+Invasion (increase max_tempents up to 1024 to prevent possible crashes)
+Half-Quake 2: Amen
+Half-Quake 3: Sunrise
+Half-Quake
+The Trap (toggle sv_fix_pushents to '0')
+Gunman Chronicles
+Black Ops

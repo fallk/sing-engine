@@ -1,0 +1,218 @@
+build 1540
+
+Fixed many-many small and large bugs before final release
+
+build 1529
+
+FS: add "fallback_dir" option
+Server: fix func_pushable interaction with movers. Add new cvar "sv_allow_rotate_pushables"
+Server: added support for 'SV_SaveGameComment' export
+Server: fixed backup for quick.sav and autosave.save (quick01.sav and autosave01.sav) 
+Client: add commandline option "-nointro" to skip start movies
+Pmove: add sv_clienttrace that shared across network
+Render: implement "envshot" and "skyshot" commands for make cubemaps or skyboxes
+Server: fix remote connection (rcon)
+Render: add glare reduction option in menu
+Server: fix FindEntityInSphere bug (satchel issues in multiplayer)
+GameUI: added to scrollbar in srcoll lists (thx ADAMIX)
+
+build 1516
+
+Engine: fix Sys_Error blowout
+GameUI: implement new credits effect in Half-Life (when game is end)
+GameUI: use system cursor instead of emulated
+
+build 1515
+
+Engine: fix some bugs
+
+build 1507
+
+Console: implement Con_NPrintf and Con_NXPrintf
+Render:  adding better lighting for studiomodels (right lighting for long sequences e.g. forklift.mdl)
+Network: clamp all integer values to prevent them out of range
+Client: VGUI implementation
+Render: fix decals loading
+Server: fix NAN error on a crossbow launch
+
+build 1488
+
+Render: fix invisible sprites when game is paused
+Render: implement new better sprites lighting
+GameUI: HL-style buttons (old good menu form WON version)
+Render: fix some rendering bugs
+
+build 1482
+
+Engine: fixed critical bug
+Launch: remove all built-in tools
+Engine: add underwater fog
+Engine: add cvar to control studio model scaling (enable or disable)
+Engine: fixed bug with mouse in multiplayer (not work in menu)
+Engine: fixed lag on rpg laserspot
+Engine: added weapon and movement prediction (may be bugly, use with caution)
+GameUI: added pfnRandomLong and pfnRandomFloat built-ins (and keep compatibility with old versions)
+Engine: added map_background (special command for loading background maps like in Source Engine)
+GameUI: added support for chaptermapbackground.txt script-file (random choose background maps)
+Render: fix some rendering bugs for mods with custom renderer (Paranoia, HLFX etc)
+
+build 1433
+
+Engine: rework hitbox trace
+Engine: implement new check for blue-shift map format
+Engine: fix PointContents for custom contents checking (spirit)
+Engine: fix "angle" field on maps (typically for gearbox)
+GameUI: implement 'mouse look' checkbox
+
+build 1430
+
+Engine: fix crash with invalid room_type set (more than 60)
+Engine: fix stuck on elevators or tracktrains for clients
+
+build 1428
+
+Engine: fix trigger_camera serialization bug
+Engine: many-many physics bugs fixed
+Engine: reworking monster's movement and path finding
+Engine: hlfx 0.6 is now working
+FS: fix bug with game and base directory dectecting when they matches
+FS: watch for changes in liblist.gam and update gameinfo.txt (feature)
+Engine: fix some rendering bugs
+GameUI: added 'suitvolume' control
+GameUI: rewrite playeyrmodel drawing, so you can shows changes when hi\low resolution button is toggled
+GameUI: remove choosing audio and video library (interface changed!)
+Engine: fix train startup sound on new level 
+
+build 1422
+
+Render: fix decals serialization bug
+Engine: fix movie plaback bug (black screen)
+Engine: fix crash on loading encrypted client.dll
+GameUI: now recalc resolution when vid_mode is changed
+Sound: fix musicvolume bug
+Image: fix indexalpha palette bug
+Physic: fix stuck on some items (weapons, ammo)
+
+build 1418
+
+Tools: move all tools into launch.dll
+Sound: moving snd_dx.dll into engine.dll
+Sound: implement CDAudio emulator with support mp3 tracks from original Half-Life
+Sound: implement mp3 support
+GameUI: GameUI.dll renamed to MainUI.dll to avoid conflict with original valve's GameUI.dll
+Engine: support for StartupVids.txt
+Engine: get full compatibility with hl.dll
+FS: recode wad resource management (now support lumps from wads with same name)
+Engine: trigger_camera is now correctly saved and restored
+Render: add sorting for translucent surfaces
+Render: make support for 'static' models (any opaque non-moving brushes engine automatically make as part of world)
+Render: correct serialization for decals on bmodels
+
+build 1338
+
+Engine: fix a broken demos recording\playing
+GameUI: get support for internal resources (built-in)
+GameUI: make font.bmp, cursor.bmp and typing.bmp as part of GameUI.dll
+GameUI: remove demo menus heads.
+
+build 1334
+
+Engine: prevent auto-repeat for most keys in-game
+Engine: implement AVI movies support (instead of RoQ support)
+Engine: enable logo.avi in main menu (see GameUI source for details) 
+
+build 1313
+
+Launch: code revision, remove dead code, implement some missed functions
+Sound: fix some errors and crash
+Sound: implement music volume
+Sound: reworking sound mixer
+Sound: implement DSP
+Engine: add support for five mouse extra-buttons
+Engine: fix some physics bugs
+SDK: add blue-shift game source to SDK (combined with main game source)
+
+build 1305
+
+Engine: implement bit-stream network buffer
+Engine: implement custom delta-encoding with user defined script (delta.lst)
+Engine: reworking client entity for get more compatibility with original HL client
+Engine: make SDK compatible with HLSDK 2.3 on the server-side
+Engine: fixup across transition time-bug
+Engine: completely rewrite server trace
+Engine: rewrite hitbox trace
+Engine: rewrite SV_PointContents
+Engine: implement a new movetype: compound for gluing two entities together (like movewith in spirit)
+Engine: fix toss entities on conveyors
+Engine: rewrite MOVETYPE_PUSH
+Engine: rewrite monsters movement code
+Engine: reworking client and game interfaces
+Engine: fix camera bugs (no sounds when client see in the camera)
+SDK: fix many-many small HL bugs in original sdk code
+Engine: fix trigger retouching system
+Engine: adjust beam visibility
+
+build 1271
+
+Engine: enable server.cfg, listenserver.cfg, mapcycle.txt etc
+Engine: got to work mapcycle.txt
+GameUI: implement redefine keys menu
+Engine: added autocomplete for cmd 'exec'
+Engine: added version info in menu
+
+build 1270
+
+SDK: Shared launcher code
+Engine: Partially fix bmodel interpolation
+Engine: use standard .cfg files instead of .rc files
+
+build 1269
+
+Render: cut invisible water polygons
+Render: implement EF_NOWATERCSG for control func_water backface culling
+Tools: fix wadlib and spritegen round bugs
+FS: implement binary search for wadlumps
+Engine: revert low-res timer
+Network: fixup userinfo fields 'model' and 'name'
+Sound: implement custom pause for various sources
+Input: disable mouse events when level is loading
+GameUI: adding some missed dialogs
+Render: fix interpolation on flying monsters
+Render: fix wrong sprite attachments
+Render: fix invalid frustum culling for studiomodels ( e.g. barnacle.mdl )
+Physic: fix trace for rotating bmodels
+Engine: fixup physinfo save\restore bug
+
+build 1262
+
+Engine: add 'allow_levelshots' cvar (disabled by default) to switch between custom levelshots and normal 'loading' screen
+Client: remove fmod.dll implementation
+Engine: implement variable-sized fonts (console, menu hints)
+Sound: added support for stereo wavs plays (menu sounds)
+Render: enable custom game icons (game.ico in mod folder)
+Engine: move menu code into new user dll called GameUI.dll (based on original q2e 0.40 menu code)
+FS: implement simple converter liblist.gam to gameinfo.txt
+
+build 1254
+
+SoundLib: ogg loop points (LOOP_START comment)
+Client: recalc fov y for more matched with original HL
+Bshift: fix env_laser entity
+Client: fix fadeout for break model pieces
+Gfx: replace default.bmp font with fixed alpha-channel (thx LokiMb)
+Render: fix invisible beams behind glass
+Render: fix glow-sprites drawing through walls (see also r_cullflares cvar)
+FS: implement filter wadlumps by wadname (e.g. gfx.wad/backtile)
+Render: implement kRenderTransColor
+Engine: completely moving particle code into the client.dll
+Client: implement tracers for sparks, garg streaks and bullets 
+
+build 1249
+
+ImageLib: added support for 4-bits and monochrome uncompressed BMPs.
+ImageLib: fix data align for NPOT textures in menu (e.g. slider.bmp).
+StdLib: skip empty symbols in numerical string for atoi and atof.
+Render: implement LoadSprite for custom client sprites (e.g. hud)
+Sound: fixed bug with background music looping
+Fonts: implement Half-Life creditfonts
+Client: move client.dll to valve folder
