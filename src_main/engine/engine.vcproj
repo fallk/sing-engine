@@ -639,6 +639,10 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;fi;fd"
 			>
+			<File
+				RelativePath=".\eiface.h"
+				>
+			</File>
 			<Filter
 				Name="Client Headers"
 				>

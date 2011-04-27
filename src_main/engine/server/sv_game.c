@@ -3944,7 +3944,72 @@ const char *pfnGetPlayerAuthId( edict_t *e )
 
 	return result;
 }
-					
+				
+void* pfnSequenceGet(const char* a, const char* b)
+{
+	return NULL;
+}
+
+void* pfnSequencePickSentence(const char*a, int b, int*c)
+{
+	return NULL;
+}
+
+int pfnGetFileSize(char*a)
+{
+	return 0;
+}
+
+unsigned int pfnGetApproxWavePlayLen(const char*a)
+{
+	return 0;
+}
+
+int pfnIsCareerMatch(void)
+{
+	return 0;
+}
+
+int pfnGetLocalizedStringLength(const char*a)
+{
+	return 0;
+}
+
+void pfnRegisterTutorMessageShown(int a)
+{
+
+}
+
+int pfnGetTimesTutorMessageShown(int a)
+{
+	return 0;
+}
+
+void pfnProcessTutorMessageDecayBuffer(int* a,int b)
+{
+
+}
+
+void pfnConstructTutorMessageDecayBuffer(int* a , int b)
+{
+
+}
+
+void pfnResetTutorMessageDecayData(void)
+{
+
+}
+
+void pfnQueryClientCvarValue(const edict_t* a, const char* b)
+{
+
+}
+
+void pfnQueryClientCvarValue2(const edict_t* a, const char* b, int c)
+{
+
+}
+
 // engine callbacks
 static enginefuncs_t gEngfuncs = 
 {
@@ -4092,6 +4157,19 @@ static enginefuncs_t gEngfuncs =
 	pfnVoice_GetClientListening,
 	pfnVoice_SetClientListening,
 	pfnGetPlayerAuthId,
+	pfnSequenceGet,
+	pfnSequencePickSentence,
+	pfnGetFileSize,
+	pfnGetApproxWavePlayLen,
+	pfnIsCareerMatch,
+	pfnGetLocalizedStringLength,
+	pfnRegisterTutorMessageShown,
+	pfnGetTimesTutorMessageShown,
+	pfnProcessTutorMessageDecayBuffer,
+	pfnConstructTutorMessageDecayBuffer,
+	pfnResetTutorMessageDecayData,
+	pfnQueryClientCvarValue,
+	pfnQueryClientCvarValue2,
 };
 
 /*

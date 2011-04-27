@@ -259,6 +259,21 @@ typedef struct enginefuncs_s
 	qboolean	(*pfnVoice_SetClientListening)(int iReceiver, int iSender, qboolean bListen);
 
 	const char *(*pfnGetPlayerAuthId)		( edict_t *e );
+
+// added from metamod
+	void*			(*pfnSequenceGet)                     (const char*, const char*);
+	void*			(*pfnSequencePickSentence)            (const char*, int, int*);
+	int              (*pfnGetFileSize)                     (char*);
+	unsigned int     (*pfnGetApproxWavePlayLen)            (const char*);
+	int              (*pfnIsCareerMatch)                   (void);
+	int              (*pfnGetLocalizedStringLength)        (const char*);
+	void             (*pfnRegisterTutorMessageShown)       (int);
+	int              (*pfnGetTimesTutorMessageShown)       (int);
+	void             (*pfnProcessTutorMessageDecayBuffer)  (int*, int);
+	void             (*pfnConstructTutorMessageDecayBuffer)(int*, int);
+	void             (*pfnResetTutorMessageDecayData)      (void);
+	void             (*pfnQueryClientCvarValue)            (const edict_t*, const char*);
+	void             (*pfnQueryClientCvarValue2)           (const edict_t*, const char*, int);
 } enginefuncs_t;
 // ONLY ADD NEW FUNCTIONS TO THE END OF THIS STRUCT.  INTERFACE VERSION IS FROZEN AT 138
 	
@@ -268,7 +283,7 @@ typedef struct KeyValueData_s
 	char	*szClassName;	// in: entity classname
 	char	*szKeyName;	// in: name of key
 	char	*szValue;		// in: value of key
-	long	fHandled;		// out: DLL sets to true if key-value pair was understood
+	long	fHandled;	// out: DLL sets to true if key-value pair was understood
 } KeyValueData;
 
 
