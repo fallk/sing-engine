@@ -15,6 +15,9 @@
 //
 // $NoKeywords: $
 //=============================================================================
+
+#ifndef NO_VGUI
+
 #include<VGUI_Cursor.h>
 #include<VGUI_Frame.h>
 #include<VGUI_Label.h>
@@ -2369,3 +2372,4 @@ int TeamFortressViewport::MsgFunc_AllowSpec( const char *pszName, int iSize, voi
 
 	return 1;
 }
+#endif

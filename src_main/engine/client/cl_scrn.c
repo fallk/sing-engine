@@ -16,7 +16,9 @@ GNU General Public License for more details.
 #include "common.h"
 #include "client.h"
 #include "gl_local.h"
+#ifndef NO_VGUI
 #include "vgui_draw.h"
+#endif
 #include "qfont.h"
 
 convar_t *scr_centertime;
@@ -407,7 +409,10 @@ void SCR_VidInit( void )
 	menu.globals->scrHeight = scr_height->integer;
 
 	SCR_RebuildGammaTable();
+
+#ifndef NO_VGUI
 	VGui_Startup ();
+#endif
 
 	clgame.load_sequence++; // now all hud sprites are invalid
 	

@@ -6,6 +6,7 @@
 //=============================================================================
 
 #include <assert.h>
+#ifndef NO_VGUI
 #include "vgui_grid.h"
 
 
@@ -394,5 +395,4 @@ bool CGrid::getCellAtPoint(int worldX, int worldY, int &row, int &col)
 		
 	return false;
 }
-
-
+#endif

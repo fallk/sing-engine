@@ -9,6 +9,8 @@
 //
 //////////////////////////////////////////////////////////////////////
 
+#ifndef NO_VGUI
+
 #include "hud.h"
 #include "cl_util.h"
 #include "const.h"
@@ -381,3 +383,4 @@ void SpectatorPanel::Update()
 		m_TeamScores[j]->setBounds( ScreenWidth - ( iTextWidth + XRES ( 4+2+4+2+offset ) + iwidth ), YRES( 1 ) + ( iheight * j ), iwidth, iheight );
 	}
 }
+#endif

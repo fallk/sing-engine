@@ -18,8 +18,10 @@ GNU General Public License for more details.
 #include "const.h"
 #include "entity_types.h"
 #include "gl_local.h"
-#include "vgui_draw.h"
 
+#ifndef NO_VGUI
+#include "vgui_draw.h"
+#endif
 /*
 ===============
 V_SetupRefDef
@@ -169,7 +171,9 @@ void V_PostRender( void )
 	if( cls.state == ca_active )
 	{
 		CL_DrawHUD( CL_ACTIVE );
+#ifndef NO_VGUI
 		VGui_Paint();
+#endif
 	}
 
 	if( cls.scrshot_action == scrshot_inactive || cls.scrshot_action == scrshot_normal )

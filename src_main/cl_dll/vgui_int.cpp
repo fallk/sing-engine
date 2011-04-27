@@ -4,7 +4,7 @@
 //
 // $NoKeywords: $
 //=============================================================================
-
+#ifndef NO_VGUI
 #include"vgui_int.h"
 #include<VGUI_Label.h>
 #include<VGUI_BorderLayout.h>
@@ -24,6 +24,8 @@
 #include "in_defs.h"
 #include "vgui_TeamFortressViewport.h"
 #include "vgui_ControlConfigPanel.h"
+
+#pragma comment(lib, "../utils/vgui/lib/win32_vc6/vgui.lib")
 
 namespace
 {
@@ -121,7 +123,4 @@ void VGui_Shutdown()
 	gViewPort = NULL;
 }
 
-
-
-
-
+#endif

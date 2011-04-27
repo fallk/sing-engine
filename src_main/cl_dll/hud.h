@@ -654,10 +654,11 @@ public:
 
 };
 
+#ifndef NO_VGUI
 class TeamFortressViewport;
-
-extern CHud gHUD;
 extern TeamFortressViewport *gViewPort;
+#endif
+extern CHud gHUD;
 
 extern int g_iPlayerClass;
 extern int g_iTeamNumber;

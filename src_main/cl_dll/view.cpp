@@ -25,6 +25,7 @@
 #include "screenfade.h"
 #include "shake.h"
 #include "hltv.h"
+#include <string.h>
 
 // Spectator Mode
 extern "C" 

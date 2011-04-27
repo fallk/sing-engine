@@ -9,7 +9,10 @@
 #include "cl_util.h"
 #include "cl_entity.h"
 #include "triangleapi.h"
+
+#ifndef NO_VGUI
 #include "vgui_TeamFortressViewport.h"
+#endif
 
 // these are included for the math functions
 #include "com_model.h"
@@ -51,8 +54,10 @@ int CHudOverview::Draw(float flTime)
 	if (!gEngfuncs.Overview_GetOverviewState())
 		return 1;
 
+#ifndef NO_VGUI
 	// make sure we have player info
 	gViewPort->GetAllPlayersInfo();
+#endif
 
 	// calculate player size on the overview
 	int x1, y1, x2, y2;

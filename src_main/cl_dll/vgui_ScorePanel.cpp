@@ -16,7 +16,7 @@
 // $NoKeywords: $
 //=============================================================================
 
-
+#ifndef NO_VGUI
 #include<VGUI_LineBorder.h>
 
 #include "hud.h"
@@ -1099,3 +1099,4 @@ void CLabelHeader::calcAlignment(int iwide, int itall, int &x, int &y)
 	x += _offset[0];
 	y += _offset[1];
 }
+#endif

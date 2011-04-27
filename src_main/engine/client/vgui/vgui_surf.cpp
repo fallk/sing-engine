@@ -12,6 +12,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
+#ifndef NO_VGUI
 
 #include "common.h"
 #include "client.h"
@@ -316,3 +317,4 @@ void CEngineSurface :: setWindowedMode( void )
 {
 	Cvar_SetFloat( "fullscreen", 0.0f );
 }
+#endif

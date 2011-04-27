@@ -13,6 +13,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#ifndef NO_VGUI
+
 #define OEMRESOURCE		// for OCR_* cursor junk
 
 #include "common.h"
@@ -299,3 +301,4 @@ long VGUI_SurfaceWndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 	}
 	return 1;
 }
+#endif

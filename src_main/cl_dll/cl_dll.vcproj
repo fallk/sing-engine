@@ -4,6 +4,7 @@
 	Version="9,00"
 	Name="cl_dll"
 	ProjectGUID="{BEE2D1B0-67EF-498F-B88F-2A8D985DAC23}"
+	RootNamespace="cl_dll"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -175,7 +176,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
-				AdditionalDependencies="winmm.lib ../utils/vgui/lib/win32_vc6/vgui.lib wsock32.lib"
+				AdditionalDependencies="winmm.lib wsock32.lib"
 				OutputFile="..\temp\cl_dll\!release/client.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

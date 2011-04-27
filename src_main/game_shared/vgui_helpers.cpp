@@ -5,6 +5,8 @@
 // $NoKeywords: $
 //=============================================================================
 
+#ifndef NO_VGUI
+
 #include "vgui_helpers.h"
 
 
@@ -40,6 +42,4 @@ void AlignPanel(Panel *pChild, Panel *pParent, int alignment)
 		pChild->setPos(xCenter, yCenter);
 }
 
-
-
-
+#endif

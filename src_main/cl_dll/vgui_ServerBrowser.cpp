@@ -5,6 +5,8 @@
 // $NoKeywords: $
 //=============================================================================
 
+#ifndef NO_VGUI
+
 #include<VGUI_HeaderPanel.h>
 #include<VGUI_TablePanel.h>
 #include<VGUI_LineBorder.h>
@@ -621,3 +623,4 @@ void CBrowser_InputSignal::mouseDoublePressed(MouseCode code,Panel* panel)
 	m_pBrowser->setMouseOverRow( therow );
 	m_pBrowser->DoConnect();
 }
+#endif

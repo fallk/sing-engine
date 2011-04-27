@@ -5,6 +5,7 @@
 // $NoKeywords: $
 //=============================================================================
 
+#ifndef NO_VGUI
 #include "VGUI_Slider2.h"
 
 #include<VGUI_InputSignal.h>
@@ -434,3 +435,4 @@ void Slider2::setButtonOffset(int buttonOffset)
 {
 	_buttonOffset=buttonOffset;
 }
+#endif

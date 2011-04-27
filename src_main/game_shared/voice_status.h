@@ -8,7 +8,7 @@
 #ifndef VOICE_STATUS_H
 #define VOICE_STATUS_H
 #pragma once
-
+#ifndef NO_VGUI
 
 #include "VGUI_Label.h"
 #include "VGUI_LineBorder.h"
@@ -220,9 +220,8 @@ public:
 	char *				m_pchGameDir;
 };
 
-
 // Get the (global) voice manager. 
 CVoiceStatus* GetClientVoiceMgr();
 
-
+#endif
 #endif // VOICE_STATUS_H

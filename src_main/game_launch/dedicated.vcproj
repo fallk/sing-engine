@@ -17,8 +17,8 @@
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\..\temp\launch\!release"
-			IntermediateDirectory=".\..\temp\launch\!release"
+			OutputDirectory=".\..\temp\launch_dedicated\!release"
+			IntermediateDirectory=".\..\temp\launch_dedicated\!release"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
 			UseOfMFC="0"

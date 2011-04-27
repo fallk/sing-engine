@@ -13,6 +13,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#ifndef NO_VGUI
 #include "common.h"
 #include "client.h"
 #include "gl_local.h"
@@ -245,3 +246,4 @@ void VGUI_DrawQuad( const vpoint_t *ul, const vpoint_t *lr )
 		pglVertex2f( ul->point[0], lr->point[1] );
 	pglEnd();
 }
+#endif

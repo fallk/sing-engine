@@ -29,7 +29,20 @@ GNU General Public License for more details.
 #include "sprite.h"
 #include "gl_local.h"
 #include "library.h"
+
+#ifndef NO_VGUI
 #include "vgui_draw.h"
+#else
+void VGui_ViewportPaintBackground( int extents[4] )
+{
+	// TODO
+}
+
+void *VGui_GetPanel( void )
+{
+	return 0;
+}
+#endif
 
 #define MAX_TEXTCHANNELS	8		// must be power of two (GoldSrc uses 4 channel)
 #define TEXT_MSGNAME	"TextMessage%i"
@@ -3676,7 +3689,10 @@ void CL_UnloadProgs( void )
 	CL_FreeTempEnts();
 	CL_FreeViewBeams();
 	CL_FreeParticles();
+
+#ifndef NO_VGUI
 	VGui_Shutdown();
+#endif
 
 	// NOTE: HLFX 0.5 has strange bug: hanging on exit if no map was loaded
 	if( !( !Q_stricmp( GI->gamedir, "hlfx" ) && GI->version == 0.5f ))
@@ -3711,8 +3727,10 @@ qboolean CL_LoadProgs( const char *name )
 	// NOTE: important stuff!
 	// vgui must startup BEFORE loading client.dll to avoid get error ERROR_NOACESS
 	// during LoadLibrary
+#ifndef NO_VGUI
 	VGui_Startup ();
-	
+#endif
+
 	clgame.hInstance = Com_LoadLibrary( name, false );
 	if( !clgame.hInstance ) return false;
 

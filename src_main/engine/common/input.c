@@ -16,7 +16,10 @@ GNU General Public License for more details.
 #include "common.h"
 #include "input.h"
 #include "client.h"
+
+#ifndef NO_VGUI
 #include "vgui_draw.h"
+#endif
 
 #define WND_HEADSIZE	wnd_caption		// some offset
 #define WND_BORDER		3			// sentinel border in pixels
@@ -204,8 +207,10 @@ void IN_ActivateMouse( qboolean force )
 	if( !in_mouseinitialized )
 		return;
 
+#ifndef NO_VGUI
 	if( CL_Active() && host.mouse_visible && !force )
 		return;	// VGUI controls  
+#endif
 
 	if( cls.key_dest == key_menu && !Cvar_VariableInteger( "fullscreen" ))
 	{
@@ -439,7 +444,9 @@ long IN_WndProc( void *hWnd, uint uMsg, uint wParam, long lParam )
 	if( uMsg == in_mouse_wheel )
 		uMsg = WM_MOUSEWHEEL;
 
+#ifndef NO_VGUI
 	VGUI_SurfaceWndProc( hWnd, uMsg, wParam, lParam );
+#endif
 
 	switch( uMsg )
 	{

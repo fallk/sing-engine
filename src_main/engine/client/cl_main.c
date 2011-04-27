@@ -20,7 +20,10 @@ GNU General Public License for more details.
 #include "gl_local.h"
 #include "input.h"
 #include "../cl_dll/kbutton.h"
+
+#ifndef NO_VGUI
 #include "vgui_draw.h"
+#endif
 
 #define MAX_TOTAL_CMDS		16
 #define MIN_CMD_RATE		10.0
@@ -1523,7 +1526,9 @@ void Host_ClientFrame( void )
 	// if in the debugger last frame, don't timeout
 	if( host.frametime > 5.0f ) cls.netchan.last_received = Sys_DoubleTime();
 
+#ifndef NO_VGUI
 	VGui_RunFrame ();
+#endif
 
 	clgame.dllFuncs.pfnFrame( cl.time );
 

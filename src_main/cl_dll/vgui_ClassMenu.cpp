@@ -16,6 +16,8 @@
 // $NoKeywords: $
 //=============================================================================
 
+#ifndef NO_VGUI
+
 #include "VGUI_Font.h"
 #include <VGUI_TextImage.h>
 
@@ -430,3 +432,4 @@ void CClassMenuPanel::SetActiveInfo( int iInput )
 	m_pScrollPanel->validate();
 }
 
+#endif

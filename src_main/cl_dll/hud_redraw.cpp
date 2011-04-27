@@ -19,7 +19,9 @@
 #include "hud.h"
 #include "cl_util.h"
 
+#ifndef NO_VGUI
 #include "vgui_TeamFortressViewport.h"
+#endif
 
 #define MAX_LOGO_FRAMES 56
 
@@ -95,6 +97,7 @@ int CHud :: Redraw( float flTime, int intermission )
 	if ( m_flTimeDelta < 0 )
 		m_flTimeDelta = 0;
 
+#ifndef NO_VGUI
 	// Bring up the scoreboard during intermission
 	if (gViewPort)
 	{
@@ -119,7 +122,7 @@ int CHud :: Redraw( float flTime, int intermission )
 				m_flShotTime = flTime + 1.0;	// Take a screenshot in a second
 		}
 	}
-
+#endif
 	if (m_flShotTime && m_flShotTime < flTime)
 	{
 		gEngfuncs.pfnClientCmd("snapshot\n");

@@ -24,14 +24,40 @@
 #include <stdio.h>
 #include "parsemsg.h"
 #include "hud_servers.h"
+#ifndef NO_VGUI
 #include "vgui_int.h"
 #include "vgui_TeamFortressViewport.h"
+#endif
 
 #include "demo.h"
 #include "demo_api.h"
+
+#ifndef NO_VGUI
 #include "vgui_scorepanel.h"
+#else
+int g_iPlayerClass;
+int g_iTeamNumber;
+int g_iUser1;
+int g_iUser2;
+int g_iUser3;
+int iNumberOfTeamColors = 5;
+int iTeamColors[5][3] =
+{
+	{ 255, 170, 0 },	// HL orange (default)
+	{ 125, 165, 210 },	// Blue
+	{ 200, 90, 70 },	// Red
+	{ 225, 205, 45 },	// Yellow
+	{ 145, 215, 140 },	// Green
+};
+hud_player_info_t	 g_PlayerInfoList[MAX_PLAYERS+1];	   // player info from the engine
+extra_player_info_t  g_PlayerExtraInfo[MAX_PLAYERS+1];   // additional player info sent directly to the client dll
+team_info_t			 g_TeamInfo[MAX_TEAMS+1];
+int	g_IsSpectator[MAX_PLAYERS+1];
+class IVoiceStatusHelper
+{
 
-
+};
+#endif
 
 class CHLVoiceStatusHelper : public IVoiceStatusHelper
 {
@@ -59,7 +85,9 @@ public:
 
 	virtual void UpdateCursorState()
 	{
+#ifndef NO_VGUI
 		gViewPort->UpdateCursorState();
+#endif
 	}
 
 	virtual int	GetAckIconHeight()
@@ -69,9 +97,11 @@ public:
 
 	virtual bool			CanShowSpeakerLabels()
 	{
+#ifndef NO_VGUI
 		if( gViewPort && gViewPort->m_pScoreBoard )
 			return !gViewPort->m_pScoreBoard->isVisible();
 		else
+#endif
 			return false;
 	}
 };
@@ -127,141 +157,179 @@ int __MsgFunc_GameMode(const char *pszName, int iSize, void *pbuf )
 // TFFree Command Menu
 void __CmdFunc_OpenCommandMenu(void)
 {
+#ifndef NO_VGUI
 	if ( gViewPort )
 	{
 		gViewPort->ShowCommandMenu( gViewPort->m_StandardMenu );
 	}
+#endif
 }
 
 // TFC "special" command
 void __CmdFunc_InputPlayerSpecial(void)
 {
+#ifndef NO_VGUI
 	if ( gViewPort )
 	{
 		gViewPort->InputPlayerSpecial();
 	}
+#endif
 }
 
 void __CmdFunc_CloseCommandMenu(void)
 {
+#ifndef NO_VGUI
 	if ( gViewPort )
 	{
 		gViewPort->InputSignalHideCommandMenu();
 	}
+#endif
 }
 
 void __CmdFunc_ForceCloseCommandMenu( void )
 {
+#ifndef NO_VGUI
 	if ( gViewPort )
 	{
 		gViewPort->HideCommandMenu();
 	}
+#endif
 }
 
 void __CmdFunc_ToggleServerBrowser( void )
 {
+#ifndef NO_VGUI
 	if ( gViewPort )
 	{
 		gViewPort->ToggleServerBrowser();
 	}
+#endif
 }
 
 // TFFree Command Menu Message Handlers
 int __MsgFunc_ValClass(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_ValClass( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_TeamNames(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_TeamNames( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_Feign(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_Feign( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_Detpack(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_Detpack( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_VGUIMenu(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_VGUIMenu( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_MOTD(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_MOTD( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_BuildSt(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_BuildSt( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_RandomPC(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_RandomPC( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
  
 int __MsgFunc_ServerName(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_ServerName( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_ScoreInfo(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_ScoreInfo( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_TeamScore(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_TeamScore( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_TeamInfo(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_TeamInfo( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_Spectator(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_Spectator( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
 
 int __MsgFunc_AllowSpec(const char *pszName, int iSize, void *pbuf)
 {
+#ifndef NO_VGUI
 	if (gViewPort)
 		return gViewPort->MsgFunc_AllowSpec( pszName, iSize, pbuf );
+#endif
 	return 0;
 }
  
@@ -299,7 +367,9 @@ void CHud :: Init( void )
 	HOOK_MESSAGE( AllowSpec );
 
 	// VGUI Menus
+#ifndef NO_VGUI
 	HOOK_MESSAGE( VGUIMenu );
+#endif
 
 	CVAR_CREATE( "hud_classautokill", "1", FCVAR_ARCHIVE | FCVAR_USERINFO );		// controls whether or not to suicide immediately on TF class switch
 	CVAR_CREATE( "hud_takesshots", "0", FCVAR_ARCHIVE );		// controls whether or not to automatically take screenshots at the end of a round
@@ -347,7 +417,9 @@ void CHud :: Init( void )
 	m_TextMessage.Init();
 	m_StatusIcons.Init();
 
+#ifndef NO_VGUI
 	GetClientVoiceMgr()->Init(&g_VoiceStatusHelper, (vgui::Panel**)&gViewPort);
+#endif
 
 	m_Menu.Init();
 	
@@ -522,7 +594,9 @@ void CHud :: VidInit( void )
 	m_TextMessage.VidInit();
 	m_StatusIcons.VidInit();
 
+#ifndef NO_VGUI
 	GetClientVoiceMgr()->VidInit();
+#endif
 }
 
 int CHud::MsgFunc_Logo(const char *pszName,  int iSize, void *pbuf)

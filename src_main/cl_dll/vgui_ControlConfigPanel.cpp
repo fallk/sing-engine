@@ -5,6 +5,8 @@
 // $NoKeywords: $
 //=============================================================================
 
+#ifndef NO_VGUI
+
 #include<stdio.h>
 #include"vgui_ControlConfigPanel.h"
 #include<VGUI_HeaderPanel.h>
@@ -210,3 +212,4 @@ void ControlConfigPanel::SetCVarBind(const char* cvar,const char* bind,const cha
 {
 }
 
+#endif

@@ -177,7 +177,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
-				AdditionalDependencies="msvcrt.lib winmm.lib mpeg.lib ../utils/vgui/lib/win32_vc6/vgui.lib"
+				AdditionalDependencies="msvcrt.lib winmm.lib mpeg.lib"
 				OutputFile="..\temp\engine\!release\engine.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

@@ -5,6 +5,8 @@
 // $NoKeywords: $
 //=============================================================================
 
+#ifndef NO_VGUI
+
 #include"vgui_ConsolePanel.h"
 #include"hud.h"
 #include<VGUI_ActionSignal.h>
@@ -95,7 +97,4 @@ void ConsolePanel::setSize(int wide,int tall)
 	_textEntry->setBounds(5,tall-25,wide-10,20);
 }
 
-
-
-
-
+#endif

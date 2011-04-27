@@ -12,6 +12,9 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
+#ifndef NO_VGUI
+
+#pragma comment(lib, "../utils/vgui/lib/win32_vc6/vgui.lib")
 
 #include "common.h"
 #include "client.h"
@@ -139,3 +142,4 @@ void *VGui_GetPanel( void )
 {
 	return (void *)rootpanel;
 }
+#endif

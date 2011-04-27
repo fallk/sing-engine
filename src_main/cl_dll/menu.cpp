@@ -24,7 +24,9 @@
 #include <string.h>
 #include <stdio.h>
 
+#ifndef NO_VGUI
 #include "vgui_TeamFortressViewport.h"
+#endif
 
 #define MAX_MENU_STRING	512
 char g_szMenuString[MAX_MENU_STRING];
@@ -76,9 +78,11 @@ int CHudMenu :: Draw( float flTime )
 		}
 	}
 
+#ifndef NO_VGUI
 	// don't draw the menu if the scoreboard is being shown
 	if ( gViewPort && gViewPort->IsScoreBoardVisible() )
 		return 1;
+#endif
 
 	// draw the menu, along the left-hand side of the screen
 

@@ -5,6 +5,7 @@
 // $NoKeywords: $
 //=============================================================================
 
+#ifndef NO_VGUI
 // There are hud.h's coming out of the woodwork so this ensures that we get the right one.
 #if defined( DMC_BUILD )
 	#include "../dmc/cl_dll/hud.h"
@@ -45,8 +46,6 @@
 #include "vgui_loadtga.h"
 #include "vgui_helpers.h"
 #include "vgui_mousecode.h"
-
-
 
 using namespace vgui;
 
@@ -872,3 +871,4 @@ void CVoiceStatus::SetPlayerBlockedState(int iPlayer, bool blocked)
 	m_BanMgr.SetPlayerBan( playerID, blocked );
 	UpdateServerState(false);
 }
+#endif

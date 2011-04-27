@@ -21,7 +21,10 @@
 #include "hud.h"
 #include "cl_util.h"
 #include "netadr.h"
+
+#ifndef NO_VGUI
 #include "vgui_schememanager.h"
+#endif
 
 extern "C"
 {
@@ -30,14 +33,19 @@ extern "C"
 
 #include <string.h>
 #include "hud_servers.h"
+
+#ifndef NO_VGUI
 #include "vgui_int.h"
+#endif
 
 #define DLLEXPORT __declspec( dllexport )
 
 
 cl_enginefunc_t gEngfuncs;
 CHud gHUD;
+#ifndef NO_VGUI
 TeamFortressViewport *gViewPort = NULL;
+#endif
 
 void InitInput (void);
 void EV_HookEvents( void );
@@ -166,7 +174,10 @@ so the HUD can reinitialize itself.
 int DLLEXPORT HUD_VidInit( void )
 {
 	gHUD.VidInit();
+
+#ifndef NO_VGUI
 	VGui_Startup();
+#endif
 
 	return 1;
 }
@@ -185,7 +196,9 @@ void DLLEXPORT HUD_Init( void )
 {
 	InitInput();
 	gHUD.Init();
+#ifndef NO_VGUI
 	Scheme_Init();
+#endif
 }
 
 
@@ -251,7 +264,9 @@ void DLLEXPORT HUD_Frame( double time )
 {
 	ServersThink( time );
 
+#ifndef NO_VGUI
 	GetClientVoiceMgr()->Frame(time);
+#endif
 }
 
 
@@ -265,7 +280,9 @@ Called when a player starts or stops talking.
 
 void DLLEXPORT HUD_VoiceStatus(int entindex, qboolean bTalking)
 {
+#ifndef NO_VGUI
 	GetClientVoiceMgr()->UpdateSpeakerStatus(entindex, bTalking);
+#endif
 }
 
 /*

@@ -16,6 +16,8 @@
 // $NoKeywords: $
 //=============================================================================
 
+#ifndef NO_VGUI
+
 #include "VGUI_Font.h"
 
 #include "hud.h"
@@ -534,3 +536,4 @@ void CMenuHandler_StringCommandClassSelect::actionPerformed(Panel* panel)
 		gEngfuncs.pfnClientCmd("kill");
 }
 
+#endif
