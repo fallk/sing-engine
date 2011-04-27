@@ -1147,8 +1147,8 @@ unlink all cvars with flag CVAR_EXTDLL
 */
 void Cvar_Unlink_f( void )
 {
-	convar_t	*var;
-	convar_t	**prev;
+	cvar_t	*var;
+	cvar_t	**prev;
 	int	count = 0;
 
 	if( Cvar_VariableInteger( "host_gameloaded" ))
@@ -1173,7 +1173,7 @@ void Cvar_Unlink_f( void )
 
 		// throw out any variables the game created
 		*prev = var->next;
-		//if( var->string ) Mem_Free( var->string );
+		if( var->string ) Mem_Free( var->string );
 		count++;
 	}
 }
