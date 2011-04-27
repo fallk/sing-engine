@@ -3322,12 +3322,14 @@ int PM_GetPhysEntInfo( int ent )
 
 void PM_Init( struct playermove_s *ppmove )
 {
-	assert( !pm_shared_initialized );
+//	assert( !pm_shared_initialized );
+	if( !pm_shared_initialized )
+	{
+		pmove = ppmove;
 
-	pmove = ppmove;
+		PM_CreateStuckTable();
+		PM_InitTextureTypes();
 
-	PM_CreateStuckTable();
-	PM_InitTextureTypes();
-
-	pm_shared_initialized = 1;
+		pm_shared_initialized = 1;
+	}
 }

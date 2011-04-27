@@ -493,6 +493,15 @@ typedef struct
 	void	(*pfnOnFreeEntPrivateData)( edict_t *pEnt );
 	void	(*pfnGameShutdown)(void);
 	int	(*pfnShouldCollide)( edict_t *pentTouched, edict_t *pentOther );
+
+	// Added 2005/08/11 (no SDK update):
+	void	(*pfnCvarValue)( const edict_t *pEnt, const char *value ); 
+	
+	// Added 2005/11/21 (no SDK update):
+	//    value is "Bad CVAR request" on failure (i.e that user is not connected or the cvar does not exist).
+	//    value is "Bad Player" if invalid player edict.
+	void	(*pfnCvarValue2)( const edict_t *pEnt, int requestID, const char *cvarName, const char *value );
+
 	int	(*pfnCreate)( edict_t *pent, const char *szName );	// passed through pfnCreate (0 is attempt to create, -1 is reject)
 	int	(*pfnPhysicsEntity)( edict_t *pEntity );		// run custom physics for each entity (return 0 to use engine physic)
 } NEW_DLL_FUNCTIONS;

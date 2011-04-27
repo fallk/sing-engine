@@ -524,7 +524,8 @@ void Cmd_AddGameCommand( const char *cmd_name, xcommand_t function )
 	if( Cmd_Exists( cmd_name ))
 	{
 		MsgDev(D_INFO, "Cmd_AddCommand: %s already defined\n", cmd_name);
-		return;
+		// ALARM! HACKED FOR NOW
+		Cmd_RemoveCommand(cmd_name);
 	}
 
 	// use a small malloc to avoid zone fragmentation
@@ -545,7 +546,6 @@ Cmd_AddClientCommand
 void Cmd_AddClientCommand( const char *cmd_name, xcommand_t function )
 {
 	cmd_function_t	*cmd;
-
 	// fail if the command is a variable name
 	if( Cvar_FindVar( cmd_name ))
 	{
@@ -676,7 +676,7 @@ void Cmd_ExecuteString( char *text, cmd_source_t src )
 	// check functions
 	for( cmd = cmd_functions; cmd; cmd = cmd->next )
 	{
-		if( !Q_stricmp( cmd_argv[0], cmd->name ) && cmd->function )
+		if( cmd && !Q_stricmp( cmd_argv[0], cmd->name ) && cmd->function )
 		{
 			cmd->function();
 			return;
