@@ -366,9 +366,6 @@ void Cmd_Alias_f( void )
 =============================================================================
 */
 
-#define CMD_EXTDLL		BIT( 0 )		// added by game.dll
-#define CMD_CLIENTDLL	BIT( 1 )		// added by client.dll
-
 typedef struct cmd_function_s
 {
 	struct cmd_function_s	*next;
@@ -767,15 +764,14 @@ void Cmd_List_f( void )
 	}
 	Msg( "%i commands\n", i );
 }
-
 /*
 ============
 Cmd_Unlink
 
-unlink all commands with flag CVAR_EXTDLL
+unlink all commands with specified flag
 ============
 */
-void Cmd_Unlink( void )
+void Cmd_Unlink( int flag )
 {
 	cmd_function_t	*cmd;
 	cmd_function_t	**prev;
@@ -793,7 +789,7 @@ void Cmd_Unlink( void )
 		cmd = *prev;
 		if( !cmd ) break;
 
-		if( !( cmd->flags & CMD_EXTDLL ))
+		if( !( cmd->flags & flag ))
 		{
 			prev = &cmd->next;
 			continue;

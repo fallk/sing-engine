@@ -3704,7 +3704,7 @@ void CL_UnloadProgs( void )
 	Q_memset( &clgame, 0, sizeof( clgame ));
 
 	Cvar_Unlink();
-	Cmd_Unlink();
+	Cmd_Unlink(CMD_CLIENTDLL);
 }
 
 qboolean CL_LoadProgs( const char *name )

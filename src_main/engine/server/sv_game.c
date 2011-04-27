@@ -4434,6 +4434,8 @@ void SV_UnloadProgs( void )
 	// before pointers on them will be lost...
 	Cmd_ExecuteString( "@unlink\n", src_command );
 
+	Cmd_Unlink(CMD_EXTDLL);
+
 	Com_FreeLibrary( svgame.hInstance );
 	Mem_FreePool( &svgame.mempool );
 	Q_memset( &svgame, 0, sizeof( svgame ));

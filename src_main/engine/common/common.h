@@ -127,6 +127,9 @@ extern convar_t	*cl_allow_levelshots;
 extern convar_t	*host_limitlocal;
 extern convar_t	*host_maxfps;
 
+#define CMD_EXTDLL		BIT( 0 )		// added by game.dll
+#define CMD_CLIENTDLL	BIT( 1 )		// added by client.dll
+
 /*
 ==============================================================
 

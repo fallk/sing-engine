@@ -1173,7 +1173,7 @@ void Cvar_Unlink_f( void )
 
 		// throw out any variables the game created
 		*prev = var->next;
-		if( var->string ) Mem_Free( var->string );
+		//if( var->string ) Mem_Free( var->string );
 		count++;
 	}
 }
