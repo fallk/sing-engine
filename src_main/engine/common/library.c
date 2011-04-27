@@ -81,7 +81,9 @@ qboolean LibraryLoadSymbols( dll_user_t *hInst )
 	LONG		nt_signature;
 	PE_HEADER		pe_header;
 	SECTION_HEADER	section_header;
+	SECTION_HEADER	exports_header;
 	qboolean		rdata_found;
+	qboolean		edata_found;
 	OPTIONAL_HEADER	optional_header;
 	long		rdata_delta = 0;
 	EXPORT_DIRECTORY	export_directory;
@@ -164,10 +166,19 @@ qboolean LibraryLoadSymbols( dll_user_t *hInst )
 			goto table_error;
 		}
 
+		if( !Q_strcmp( section_header.Name, ".edata" ))
+		{
+			memcpy(&exports_header,&section_header, sizeof(exports_header));
+			edata_found = true;
+			if(rdata_found)
+				break;
+		}
+
 		if( !Q_strcmp( section_header.Name, ".rdata" ))
 		{
 			rdata_found = true;
-			break;
+			if(edata_found)
+				break;
 		}
 	}
 
@@ -175,7 +186,11 @@ qboolean LibraryLoadSymbols( dll_user_t *hInst )
 	{
 		rdata_delta = section_header.VirtualAddress - section_header.PointerToRawData; 
 	}
-
+	else
+	{
+		rdata_delta = exports_header.VirtualAddress - exports_header.PointerToRawData;
+	}
+	
 	exports_offset = optional_header.DataDirectory[0].VirtualAddress - rdata_delta;
 
 	if( FS_Seek( f, exports_offset, SEEK_SET ) == -1 )
