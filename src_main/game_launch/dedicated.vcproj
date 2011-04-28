@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="dedicated"
+	Name="hl_dedicated"
 	ProjectGUID="{BE7C7274-F527-453F-ABCF-6A66A9B49493}"
 	RootNamespace="dedicated"
 	TargetFrameworkVersion="0"

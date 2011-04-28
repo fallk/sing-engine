@@ -15,7 +15,12 @@ GNU General Public License for more details.
 
 #include <windows.h>
 
-#define GAME_PATH	"valve"	// default dir to start from
+// default dir to start from
+#ifdef DMC_GAME
+#define GAME_PATH	"dmc"	
+#else
+#define GAME_PATH	"valve"	
+#endif
 
 typedef void (*pfnChangeGame)( const char *progname );
 typedef int (*pfnInit)( const char *progname, int bChangeGame, pfnChangeGame func, bool dedicated );
