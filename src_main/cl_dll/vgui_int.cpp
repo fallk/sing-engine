@@ -25,7 +25,11 @@
 #include "vgui_TeamFortressViewport.h"
 #include "vgui_ControlConfigPanel.h"
 
+#ifdef CUSTOM_GAME
+#pragma comment(lib, "../../utils/vgui/lib/win32_vc6/vgui.lib")
+#else
 #pragma comment(lib, "../utils/vgui/lib/win32_vc6/vgui.lib")
+#endif
 
 namespace
 {

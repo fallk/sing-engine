@@ -38,7 +38,7 @@ if not exist sing_sdk\dmc mkdir sing_sdk\dmc
 @copy /Y sing_sdk.sln sing_sdk\sing_sdk.sln
 echo 			     Prepare OK!
 echo 		     Please wait: creating SDK in progress
-"C:\Program Files (x86)\WinRar\rar" a sing_sdk -dh -k -r -s -df -m5 sing_sdk >>makesdk.log
+"C:\Program Files (x86)\WinRar\rar" a sing_sdk -dh -k -r -s -df -m5 -ag-DD-MM-YYYY sing_sdk >>makesdk.log
 if errorlevel 1 goto error
 if errorlevel 0 goto ok
 :ok

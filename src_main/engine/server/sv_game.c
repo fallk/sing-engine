@@ -4305,7 +4305,7 @@ void SV_LoadFromFile( char *entities )
 	qboolean	create_world = true;
 	edict_t	*ent;
 
-	ASSERT( entities != NULL );
+	if(!entities) return;
 
 	inhibited = 0;
 	spawned = 0;

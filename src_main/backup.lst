@@ -17,6 +17,7 @@ dlls\
 dlls\wpn_shared
 game_shared\
 game_launch\
+dmc\
 engine\
 engine\client\
 engine\client\vgui\

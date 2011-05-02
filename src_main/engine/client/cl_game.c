@@ -3421,7 +3421,158 @@ float Voice_GetControlFloat( VoiceTweakControl iControl )
 	// TODO: implement
 	return 1.0f;
 }
-			
+
+void* GetCvarList(void)
+{
+	return NULL;
+}
+
+
+void* GetCmdList(void)
+{
+	return NULL;
+}
+
+char* CmdNameFromPointer(void*pointer)
+{
+	return NULL;
+}
+
+char * CvarNameFromPointer(void*pointer)
+{
+	return NULL;
+}
+
+float GetCurTime(void)
+{
+	return 1.0f;
+}
+
+float GetGravity(void)
+{
+	return 800.0f;
+}
+
+void * GetModelByIndex( int index )
+{
+	return NULL;
+}
+
+void SetGL_TexSort( int value )
+{
+
+}
+
+void SetGL_TexSort_Colour( float red, float green, float blue )
+{
+
+}
+
+void SetGL_TexSort_Scale( float scale )
+{
+
+}
+
+void * SequenceGet( const char * fileName, const char * entryName )
+{
+	return NULL;
+}
+
+void DrawSpriteGeneric(int frame, int x, int y, const wrect_t *prc, int u1, int i2, int u3, int u4)
+{
+
+}
+
+void * SequencePickSentence( const char * groupName, int pickMethod, int *picked )
+{
+	return NULL;
+}
+
+void Unk1(void *u1, void *u2, void *u3, void *u4, void *u5, void *u6)
+{
+
+}
+
+void Unk2(void *u1, void *u2)
+{
+
+}
+
+char * Unk3 ( char * u1 )
+{
+	return u1;
+}
+
+void Unk4(void *u1, void *u2)
+{
+
+}
+
+void Unk5(void *u1, void *u2, void *u3, void *u4, void *u5)
+{
+
+}
+
+void GetApproxWavePlayLen( char * fileName )
+{
+
+}
+
+int Unk6(void)
+{
+	return 1;
+}
+
+void _Cvar_Set(char *name, char *value)
+{
+	Cvar_Set(name, value);
+}
+
+int IsCareerMatch(void)
+{
+	return 1;
+}
+
+void StartDynamicSound(char *fileName, float volume, float pitch)
+{
+
+}
+
+void MP3_InitStream( char *fileName, int u1 )
+{
+
+}
+
+float Unk7(void)
+{
+	return 1.0f;
+}
+
+void ProcessTutorMessageDecayBuffer( int *buffer, int buflen )
+{
+
+}
+
+void ConstructTutorMessageDecayBuffer( int * buffer, int buflen )
+{
+
+}
+
+void ResetTutorMessageDecayData(void)
+{
+
+}
+
+void StartDynamicSound2( char * fileName, float volume, float pitch )
+{
+
+}
+
+void FillRGBA2(int x, int y, int width, int height, int r, int g, int b, int a)
+{
+	//FillRGBA(x, y, width, height, r, g, b, a);
+}
+
 static triangleapi_t gTriApi =
 {
 	TRI_API_VERSION,	
@@ -3679,6 +3830,36 @@ static cl_enginefunc_t gEngfuncs =
 	pfnGetMousePos,
 	pfnSetMousePos,
 	pfnSetMouseEnable,
+	GetCvarList,
+	GetCmdList,
+	CmdNameFromPointer,
+	CvarNameFromPointer,
+	GetCurTime,
+	GetGravity,
+	GetModelByIndex,
+	SetGL_TexSort,
+	SetGL_TexSort_Colour,
+	SetGL_TexSort_Scale,
+	SequenceGet,
+	DrawSpriteGeneric,
+	SequencePickSentence,
+	Unk1,
+	Unk2,
+	Unk3,
+	Unk4,
+	Unk5,
+	GetApproxWavePlayLen,
+	Unk6,
+	_Cvar_Set,
+	IsCareerMatch,
+	StartDynamicSound,
+	MP3_InitStream,
+	Unk7,
+	ProcessTutorMessageDecayBuffer,
+	ConstructTutorMessageDecayBuffer,
+	ResetTutorMessageDecayData,
+	StartDynamicSound2,
+	FillRGBA2
 };
 
 void CL_UnloadProgs( void )
