@@ -1470,7 +1470,6 @@ void FS_Init( void )
 		// validate directories
 		for( i = 0; i < dirs.numstrings; i++ )
 		{
-			MsgDev(D_NOTE, "pathz: %s\n", dirs.strings[i]);
 			if( !Q_stricmp( SI.ModuleName, dirs.strings[i] ))
 				hasDefaultDir = true;
 

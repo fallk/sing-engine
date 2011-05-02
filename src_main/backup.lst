@@ -4,11 +4,12 @@
 //=======================================================================
 
 // global stuff
-xash.sln
+sing.sln
 backup.lst
 backup.bat
 make_sdk.bat
-xash_sdk.lst
+sing_sdk.lst
+sing_sdk.sln
 
 cl_dll\
 cl_dll\hl\

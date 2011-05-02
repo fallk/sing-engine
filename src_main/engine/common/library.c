@@ -177,6 +177,8 @@ qboolean LibraryLoadSymbols( dll_user_t *hInst )
 		if( !Q_strcmp( section_header.Name, ".rdata" ))
 		{
 			rdata_found = true;
+			if(edata_found)
+				break;
 		}
 	}
 

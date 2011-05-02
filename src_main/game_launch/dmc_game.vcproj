@@ -55,9 +55,9 @@
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				PrecompiledHeaderFile=".\..\temp\launch\!release/game.pch"
-				AssemblerListingLocation=".\..\temp\launch\!release/"
-				ObjectFile=".\..\temp\launch\!release/"
-				ProgramDataBaseFileName=".\..\temp\launch\!release/"
+				AssemblerListingLocation=".\..\temp\launch_dmc\!release/"
+				ObjectFile=".\..\temp\launch_dmc\!release/"
+				ProgramDataBaseFileName=".\..\temp\launch_dmc\!release/"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 			/>

@@ -275,7 +275,7 @@ typedef struct model_s
 	cache_user_t	cache;		// only access through Mod_Extradata
 } model_t;
 
-//typedef vec_t		vec4_t[4];
+typedef vec_t		vec4_t[4];
 
 typedef struct alight_s
 {
