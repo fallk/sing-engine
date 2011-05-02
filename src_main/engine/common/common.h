@@ -24,6 +24,8 @@ extern "C" {
 #pragma warning(disable : 4244)	// MIPS
 #pragma warning(disable : 4018)	// signed/unsigned mismatch
 #pragma warning(disable : 4305)	// truncation from const double to float
+#pragma warning(disable : 4091) // typedef warn
+#pragma warning(disable : 4996) // deprecated msvc warning
 
 #define MAX_STRING		256	// generic string
 #define MAX_INFO_STRING	256	// infostrings are transmitted across network
@@ -615,7 +617,7 @@ int pfnIsInGame( void );
 
 ==============================================================
 */
-#define Z_Malloc( size )		Mem_Alloc( host.mempool, size )
+#define Z_Malloc( size )		Mem_Alloc( host.mempool, size+1 )
 #define Z_Realloc( ptr, size )	Mem_Realloc( host.mempool, ptr, size )
 #define Z_Free( ptr )		if( ptr ) Mem_Free( ptr )
 
@@ -637,6 +639,7 @@ uint Com_HashKey( const char *string, uint hashSize );
 //
 // hpak.c
 //
+#ifndef HPAK_C
 void HPAK_Init( void );
 qboolean HPAK_GetDataPointer( const char *filename, struct resource_s *pRes, byte **buffer, int *size );
 qboolean HPAK_ResourceForHash( const char *filename, char *hash, struct resource_s *pRes );
@@ -644,6 +647,7 @@ void HPAK_AddLump( qboolean queue, const char *filename, struct resource_s *pRes
 void HPAK_CheckIntegrity( const char *filename );
 void HPAK_CheckSize( const char *filename );
 void HPAK_FlushHostQueue( void );
+#endif
 
 //
 // keys.c
@@ -690,7 +694,9 @@ int CL_PointContents( const vec3_t point );
 char *COM_ParseFile( char *data, char *token );
 byte *COM_LoadFile( const char *filename, int usehunk, int *pLength );
 qboolean CL_GetEntitySpatialization( int entnum, vec3_t origin, vec3_t velocity );
+#ifndef CL_GAME_C
 void CL_StudioEvent( struct mstudioevent_s *event, struct cl_entity_s *ent );
+#endif
 qboolean CL_GetComment( const char *demoname, char *comment );
 void COM_AddAppDirectoryToSearchPath( const char *pszBaseDir, const char *appName );
 int COM_ExpandFilename( const char *fileName, char *nameOutBuffer, int nameOutBufferSize );
@@ -725,10 +731,12 @@ long SCR_GetAudioChunk( char *rawdata, long length );
 wavdata_t *SCR_GetMovieInfo( void );
 void SCR_Shutdown( void );
 void Con_Print( const char *txt );
+#ifndef CONSOLE_C
 void Con_NPrintf( int idx, char *fmt, ... );
 void Con_NXPrintf( struct con_nprint_s *info, char *fmt, ... );
 void UI_NPrintf( int idx, char *fmt, ... );
 void UI_NXPrintf( struct con_nprint_s *info, char *fmt, ... );
+#endif
 char *Info_ValueForKey( const char *s, const char *key );
 void Info_RemovePrefixedKeys( char *start, char prefix );
 qboolean Info_RemoveKey( char *s, const char *key );

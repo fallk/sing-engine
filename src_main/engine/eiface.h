@@ -315,9 +315,6 @@ typedef struct
 
 typedef struct saverestore_s SAVERESTOREDATA;
 
-#ifdef _WIN32
-typedef 
-#endif
 struct saverestore_s
 {
 	char		*pBaseData;		// Start of all entity save data
@@ -340,11 +337,7 @@ struct saverestore_s
 	float		time;
 	char		szCurrentMapName[32];	// To check global entities
 
-} 
-#ifdef _WIN32
-SAVERESTOREDATA 
-#endif
-;
+} ;
 
 typedef enum _fieldtypes
 {

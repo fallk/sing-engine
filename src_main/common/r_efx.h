@@ -110,7 +110,7 @@ typedef struct tempent_s
 	// baseline.origin		- velocity
 	// baseline.renderamt	- starting fadeout intensity
 	// baseline.angles		- angle velocity
-} TEMPENTITY;
+};
 
 typedef struct efx_api_s efx_api_t;
 

@@ -14,9 +14,13 @@ GNU General Public License for more details.
 */
 
 #include <fcntl.h>
-#include <direct.h>
 #include <sys/stat.h>
+#ifndef LINUX
+#include <direct.h>
 #include <io.h>
+#else
+#include "../winefcntl.h"
+#endif
 #include <time.h>
 #include "common.h"
 #include "wadfile.h"
@@ -25,6 +29,15 @@ GNU General Public License for more details.
 #include "mathlib.h"
 
 #define FILE_BUFF_SIZE		2048
+
+typedef struct  _finddata_s {
+	unsigned attrib;
+	time_t	time_create;
+	time_t	time_access;
+	time_t	time_write;
+	unsigned long size;
+	char name[260];
+} _finddata_t;
 
 typedef struct stringlist_s
 {
@@ -235,7 +248,7 @@ void listdirectory( stringlist_t *list, const char *path )
 {
 	int		i;
 	char		pattern[4096], *c;
-	struct _finddata_t	n_file;
+	_finddata_t	n_file;
 	long		hFile;
 
 	Q_strncpy( pattern, path, sizeof( pattern ));
@@ -1457,6 +1470,7 @@ void FS_Init( void )
 		// validate directories
 		for( i = 0; i < dirs.numstrings; i++ )
 		{
+			MsgDev(D_NOTE, "pathz: %s\n", dirs.strings[i]);
 			if( !Q_stricmp( SI.ModuleName, dirs.strings[i] ))
 				hasDefaultDir = true;
 
@@ -3080,7 +3094,7 @@ wfile_t *W_Open( const char *filename, const char *mode )
 		hdr.infotableofs = sizeof( dwadinfo_t );
 		write( wad->handle, &hdr, sizeof( hdr ));
 		write( wad->handle, comment, Q_strlen( comment ) + 1 );
-		wad->infotableofs = tell( wad->handle );
+		wad->infotableofs = ftell( wad->handle );
 	}
 	else if( mode[0] == 'r' || mode[0] == 'a' )
 	{
@@ -3168,7 +3182,7 @@ void W_Close( wfile_t *wad )
 		dwadinfo_t	hdr;
 
 		// write the lumpingo
-		ofs = tell( wad->handle );
+		ofs = ftell( wad->handle );
 		write( wad->handle, wad->lumps, wad->numlumps * sizeof( dlumpinfo_t ));
 		
 		// write the header

@@ -40,7 +40,7 @@ GNU General Public License for more details.
 #define VID_LEVELSHOT	1
 #define VID_MINISHOT	2
 
-typedef int		sound_t;
+//typedef int		sound_t;
 
 //=============================================================================
 typedef struct frame_s
@@ -572,7 +572,12 @@ int pfnIndexFromTrace( struct pmtrace_s *pTrace );
 int CL_FindModelIndex( const char *m );
 _HSPRITE pfnSPR_Load( const char *szPicName );
 
-_inline cl_entity_t *CL_EDICT_NUM( int n )
+#ifdef LINUX
+static inline
+#else
+_inline
+#endif
+cl_entity_t *CL_EDICT_NUM( int n )
 {
 	if(( n >= 0 ) && ( n < clgame.maxEntities ))
 		return clgame.entities + n;

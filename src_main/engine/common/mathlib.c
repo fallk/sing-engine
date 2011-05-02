@@ -92,6 +92,7 @@ SinCos
 */
 void SinCos( float radians, float *sine, float *cosine )
 {
+#ifndef LINUX
 	_asm
 	{
 		fld	dword ptr [radians]
@@ -103,6 +104,13 @@ void SinCos( float radians, float *sine, float *cosine )
 		fstp dword ptr [edx]
 		fstp dword ptr [eax]
 	}
+#else
+	register double __cosr, __sinr;
+	__asm __volatile__
+		("fsincos": "=t" (__cosr), "=u" (__sinr) : "0" (radians));
+	*sine = __sinr;
+	*cosine = __cosr;
+#endif
 }
 
 float VectorNormalizeLength2( const vec3_t v, vec3_t out )

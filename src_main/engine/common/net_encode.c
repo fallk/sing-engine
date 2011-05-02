@@ -13,6 +13,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#define NET_ENCODE_C
+
 #include "common.h"
 #include "netchan.h"
 #include "mathlib.h"

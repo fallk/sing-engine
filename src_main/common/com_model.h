@@ -186,7 +186,7 @@ typedef struct msurface_s
 
 	color24		*samples;		// note: this is the actual lightmap data for this surface
 	decal_t		*pdecals;
-} msurface_t;
+};
 
 typedef struct hull_s
 {
@@ -275,7 +275,7 @@ typedef struct model_s
 	cache_user_t	cache;		// only access through Mod_Extradata
 } model_t;
 
-typedef vec_t		vec4_t[4];
+//typedef vec_t		vec4_t[4];
 
 typedef struct alight_s
 {

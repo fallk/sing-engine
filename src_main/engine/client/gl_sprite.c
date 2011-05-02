@@ -809,7 +809,12 @@ static void R_DrawSpriteQuad( mspriteframe_t *frame, vec3_t org, vec3_t v_right,
 	pglEnd();
 }
 
-static _inline qboolean R_SpriteHasLightmap( cl_entity_t *e, int texFormat )
+#ifdef LINUX
+static inline
+#else
+static _inline
+#endif
+qboolean R_SpriteHasLightmap( cl_entity_t *e, int texFormat )
 {
 	if( !r_lighting_extended->integer )
 		return false;

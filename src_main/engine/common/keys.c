@@ -13,6 +13,10 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#ifdef LINUX
+#define __key_t_defined
+#endif
+
 #include "common.h"
 #include "input.h"
 #include "client.h"

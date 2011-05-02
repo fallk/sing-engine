@@ -27,6 +27,7 @@ static dword	ExtraMasks[32];
 
 short BF_BigShort( short swap )
 {
+#ifndef LINUX
 	short *s = &swap;
 	
 	__asm {
@@ -36,6 +37,8 @@ short BF_BigShort( short swap )
 		mov [ebx], ax
 	}
 	return *s;
+#else
+#endif
 }
 
 void BF_InitMasks( void )

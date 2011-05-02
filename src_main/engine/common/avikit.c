@@ -125,7 +125,7 @@ typedef struct movie_state_s
 	HDRAWDIB		hDD;		// DrawDib handler
 	HBITMAP		hBitmap;		// for DIB conversions
 	byte		*pframe_data;	// converted framedata
-} movie_state_t;
+};
 
 static qboolean		avi_initialized = false;
 static movie_state_t	avi[2];
@@ -193,10 +193,12 @@ qboolean AVI_ACMConvertAudio( movie_state_t *Avi )
 	// mp3 specific fix
 	if( sh->wFormatTag == 0x55 )
 	{
+#ifndef LINUX
 		LPMPEGLAYER3WAVEFORMAT	k;
 
 		k = (LPMPEGLAYER3WAVEFORMAT)sh;
 		Avi->cpa_blockalign = k->nBlockSize;
+#endif
 	}
 
 	// get the size of the output buffer for streaming the compressed audio

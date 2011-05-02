@@ -13,6 +13,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#define CL_GAME_C
+
 #include "common.h"
 #include "client.h"
 #include "const.h"

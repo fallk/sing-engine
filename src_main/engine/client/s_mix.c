@@ -17,6 +17,10 @@ GNU General Public License for more details.
 #include "sound.h"
 #include "client.h"
 
+#ifdef LINUX
+#define _inline static inline
+#endif
+
 #define IPAINTBUFFER	0
 #define IROOMBUFFER		1
 #define ISTREAMBUFFER	2

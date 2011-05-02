@@ -103,6 +103,7 @@ void Delta_ParseTableField( sizebuf_t *msg );
 
 
 // encode routines
+#ifndef NET_ENCODE_C
 void MSG_WriteDeltaUsercmd( sizebuf_t *msg, struct usercmd_s *from, struct usercmd_s *to );
 void MSG_ReadDeltaUsercmd( sizebuf_t *msg, struct usercmd_s *from, struct usercmd_s *to );
 void MSG_WriteDeltaEvent( sizebuf_t *msg, struct event_args_s *from, struct event_args_s *to );
@@ -115,5 +116,7 @@ void MSG_WriteWeaponData( sizebuf_t *msg, struct weapon_data_s *from, struct wea
 void MSG_ReadWeaponData( sizebuf_t *msg, struct weapon_data_s *from, struct weapon_data_s *to, float timebase );
 void MSG_WriteDeltaEntity( struct entity_state_s *from, struct entity_state_s *to, sizebuf_t *msg, qboolean force, qboolean player, float timebase );
 qboolean MSG_ReadDeltaEntity( sizebuf_t *msg, struct entity_state_s *from, struct entity_state_s *to, int num, qboolean player, float timebase );
+#endif
+
 
 #endif//NET_ENCODE_H

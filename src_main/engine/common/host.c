@@ -624,13 +624,13 @@ void Host_InitCommon( const char *progname, qboolean bChangeGame, BOOL dedicated
 		FS_FileBase( szTemp, szTemp );
 
 	// protect to rename engine.dll
-	if( Q_stricmp( szTemp, "engine" ) && Com_RandomLong( 0, 1 ))
+/*	if( Q_stricmp( szTemp, "engine" ) && Com_RandomLong( 0, 1 ))
 	{
 		host.type = HOST_CREDITS;
 		host.con_showalways = true;
 		Con_CreateConsole();
 		Sys_Break( show_credits, Q_timestamp( TIME_YEAR_ONLY ));
-	}
+	}*/
 
 	Con_CreateConsole();
 
@@ -818,8 +818,16 @@ void EXPORT Host_Shutdown( void )
 }
 
 // main DLL entry point
+#ifndef LINUX
 BOOL WINAPI DllMain( HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved )
 {
 	hCurrent = hinstDLL;
 	return TRUE;
 }
+#else
+int main()
+{
+	hCurrent = NULL;
+	Host_Main("valve", false, NULL, false);
+}
+#endif

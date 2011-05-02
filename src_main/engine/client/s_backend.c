@@ -288,7 +288,7 @@ SNDDMA_InitDirect
 Direct-Sound support
 ==================
 */
-si_state_t SNDDMA_InitDirect( void *hInst )
+qboolean SNDDMA_InitDirect( void *hInst )
 {
 	DSCAPS	dscaps;
 	HRESULT	hresult;
@@ -339,7 +339,7 @@ Try to find a sound device to mix for.
 Returns false if nothing is found.
 ==================
 */
-int SNDDMA_Init( void *hInst )
+qboolean SNDDMA_Init( void *hInst )
 {
 	si_state_t	stat = SIS_FAILURE;	// assume DirectSound won't initialize
 

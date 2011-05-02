@@ -38,7 +38,7 @@ static qboolean		draw_fullbrights = false;
 static gllightmapstate_t	gl_lms;
 static msurface_t		*skychain = NULL;
 
-static void LM_UploadBlock( int lightmapnum );
+static void LM_UploadBlock( qboolean dynamic );
 
 byte *Mod_GetCurrentVis( void )
 {
@@ -1063,7 +1063,12 @@ static int R_SurfaceCompare( const msurface_t **a, const msurface_t **b )
 	return 0;
 }
 
-static _inline qboolean R_CullSurface( msurface_t *surf, uint clipflags )
+#ifdef LINUX
+static inline
+#else
+static _inline
+#endif
+qboolean R_CullSurface( msurface_t *surf, uint clipflags )
 {
 	mextrasurf_t	*info;
 

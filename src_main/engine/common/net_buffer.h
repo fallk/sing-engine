@@ -24,6 +24,10 @@ GNU General Public License for more details.
 ==============================================================================
 */
 
+#ifdef LINUX
+#define _inline static inline
+#endif
+
 // Pad a number so it lies on an N byte boundary.
 // So PAD_NUMBER(0,4) is 0 and PAD_NUMBER(1,4) is 4
 #define PAD_NUMBER( num, boundary )	((( num ) + (( boundary ) - 1 )) / ( boundary )) * ( boundary )
@@ -130,4 +134,8 @@ char *BF_ReadStringExt( sizebuf_t *bf, qboolean bLine );
 // delta-read functions
 void BF_ReadDeltaMovevars( sizebuf_t *sb, struct movevars_s *from, struct movevars_s *to );
 					
+
+#ifdef LINUX
+#undef _inline
+#endif
 #endif//NET_BUFFER_H

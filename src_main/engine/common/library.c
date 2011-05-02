@@ -177,8 +177,6 @@ qboolean LibraryLoadSymbols( dll_user_t *hInst )
 		if( !Q_strcmp( section_header.Name, ".rdata" ))
 		{
 			rdata_found = true;
-			if(edata_found)
-				break;
 		}
 	}
 
@@ -319,6 +317,7 @@ smart dll loader - can loading dlls from pack or wad files
 void *Com_LoadLibraryExt( const char *dllname, int build_ordinals_table, qboolean directpath )
 {
 	dll_user_t *hInst;
+	LPVOID lpMsgBuf;
 
 	hInst = FS_FindLibrary( dllname, directpath );
 	if( !hInst ) return NULL; // nothing to load
@@ -334,7 +333,16 @@ void *Com_LoadLibraryExt( const char *dllname, int build_ordinals_table, qboolea
 
 	if( !hInst->hInstance )
 	{
-		MsgDev( D_NOTE, "Sys_LoadLibrary: Loading %s - failed\n", dllname );
+		FormatMessage(
+			FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+			NULL,
+			GetLastError(),
+			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), // Default language
+			(LPTSTR) &lpMsgBuf,
+			0,
+			NULL
+			);
+		MsgDev( D_NOTE, "Sys_LoadLibrary: Loading %s - failed: %s\n", dllname, lpMsgBuf );
 		Com_FreeLibrary( hInst );
 		return NULL;
 	}
