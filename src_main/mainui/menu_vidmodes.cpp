@@ -110,7 +110,7 @@ static void UI_VidOptions_SetConfig( void )
 {
 	CVAR_SET_FLOAT( "vid_mode", uiVidModes.vidList.curItem );
 	CVAR_SET_FLOAT( "fullscreen", !uiVidModes.windowed.enabled );
-	CVAR_SET_FLOAT( "r_allow_software", uiVidModes.software.enabled );
+	CVAR_SET_FLOAT( "gl_allow_software", uiVidModes.software.enabled );
 }
 
 /*
@@ -120,7 +120,7 @@ UI_VidModes_UpdateConfig
 */
 static void UI_VidOptions_UpdateConfig( void )
 {
-	CVAR_SET_FLOAT( "r_allow_software", uiVidModes.software.enabled );
+	CVAR_SET_FLOAT( "gl_allow_software", uiVidModes.software.enabled );
 }
 
 /*
