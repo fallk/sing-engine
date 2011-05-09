@@ -142,8 +142,8 @@ void GL_TexFilter( gltexture_t *tex, qboolean update )
 		}
 		else
 		{
-			pglTexParameteri( tex->target, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-			pglTexParameteri( tex->target, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+			pglTexParameteri( tex->target, GL_TEXTURE_MIN_FILTER, r_textureMagFilter );
+			pglTexParameteri( tex->target, GL_TEXTURE_MAG_FILTER, r_textureMagFilter );
 		}
 	}
 	else
@@ -268,7 +268,7 @@ void R_SetTextureParameters( void )
 	for( i = 0, texture = r_textures; i < r_numTextures; i++, texture++ )
 	{
 		if( !texture->texnum ) continue;	// free slot
-		GL_MBind( texture->texnum );
+		GL_MBind( i );
 		GL_TexFilter( texture, true );
 	}
 }
