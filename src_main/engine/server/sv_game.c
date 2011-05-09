@@ -24,8 +24,9 @@ GNU General Public License for more details.
 #define DEBUG_NEW_CLIENTPVS_CHECK
 
 // fatpvs stuff
-static byte fatpvs[MAX_CLIENTS][MAX_MAP_LEAFS/8];
-static byte fatphs[MAX_CLIENTS][MAX_MAP_LEAFS/8];
+static byte fatpvs[MAX_MAP_LEAFS/8];
+static byte fatphs[MAX_MAP_LEAFS/8];
+static vec3_t viewPoint[MAX_CLIENTS];
 static byte *bitvector;
 static int fatbytes;
 
@@ -225,12 +226,14 @@ MSG_PHS	send to clients potentially hearable from org
 */
 qboolean SV_Send( int dest, const vec3_t origin, const edict_t *ent )
 {
+	byte		*mask = NULL;
 	int		j, numclients = sv_maxclients->integer;
 	sv_client_t	*cl, *current = svs.clients;
 	qboolean		reliable = false;
 	qboolean		specproxy = false;
-	qboolean		use_mask = false;
+	float		*viewOrg = NULL;
 	int		numsends = 0;
+	mleaf_t		*leaf;
 
 	switch( dest )
 	{
@@ -254,14 +257,16 @@ qboolean SV_Send( int dest, const vec3_t origin, const edict_t *ent )
 		// intentional fallthrough
 	case MSG_PAS:
 		if( origin == NULL ) return false;
-		use_mask = true;
+		leaf = Mod_PointInLeaf( origin, sv.worldmodel->nodes );
+		mask = Mod_LeafPHS( leaf, sv.worldmodel );
 		break;
 	case MSG_PVS_R:
 		reliable = true;
 		// intentional fallthrough
 	case MSG_PVS:
 		if( origin == NULL ) return false;
-		use_mask = true;
+		leaf = Mod_PointInLeaf( origin, sv.worldmodel->nodes );
+		mask = Mod_LeafPVS( leaf, sv.worldmodel );
 		break;
 	case MSG_ONE:
 		reliable = true;
@@ -302,21 +307,16 @@ qboolean SV_Send( int dest, const vec3_t origin, const edict_t *ent )
 				continue;
 		}
 
-		if( use_mask )
+		if( mask )
 		{
 			int	leafnum, clientnum;
-			byte	*mask;
-	
-			// -1 is because pvs rows are 1 based, not 0 based like leafs
-			leafnum = Mod_PointLeafnum( origin ) - 1;
+
 			clientnum = cl - svs.clients;
+			viewOrg = viewPoint[clientnum];
 
-			if( dest == MSG_PAS_R || dest == MSG_PAS )
-				mask = fatphs[clientnum];
-			else if( dest == MSG_PVS_R || dest == MSG_PVS )
-				mask = fatpvs[clientnum];
-
-			if( !(mask[leafnum>>3] & (1<<( leafnum & 7 ))))
+			// -1 is because pvs rows are 1 based, not 0 based like leafs
+			leafnum = Mod_PointLeafnum( viewOrg ) - 1;
+			if( mask && (!(mask[leafnum>>3] & (1<<( leafnum & 7 )))))
 				continue;
 		}
 
@@ -3594,7 +3594,10 @@ byte *pfnSetFatPVS( const float *org )
 
 	ASSERT( svs.currentPlayerNum >= 0 && svs.currentPlayerNum < MAX_CLIENTS );
 
-	bitvector = fatpvs[svs.currentPlayerNum];
+	// save viewpoint in case this overrided by custom camera code 
+	VectorCopy( org, viewPoint[svs.currentPlayerNum] );
+
+	bitvector = fatpvs;
 	fatbytes = (sv.worldmodel->numleafs+31)>>3;
 	if(!( sv.hostflags & SVF_PORTALPASS ))
 		Q_memset( bitvector, 0, fatbytes );
@@ -3618,7 +3621,7 @@ byte *pfnSetFatPAS( const float *org )
 
 	ASSERT( svs.currentPlayerNum >= 0 && svs.currentPlayerNum < MAX_CLIENTS );
 
-	bitvector = fatphs[svs.currentPlayerNum];
+	bitvector = fatphs;
 	fatbytes = (sv.worldmodel->numleafs+31)>>3;
 	if(!( sv.hostflags & SVF_PORTALPASS ))
 		Q_memset( bitvector, 0, fatbytes );
