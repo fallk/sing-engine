@@ -2256,7 +2256,7 @@ static int pfnIsHardware( void )
 	return true;
 }
 
-static void StudioDrawShadow( studiohdr_t *pstudiohdr, matrix3x4 transform[MAXSTUDIOBONES] )
+void StudioDrawShadow( studiohdr_t *pstudiohdr, matrix3x4 transform[MAXSTUDIOBONES] )
 {
 	// in GoldSrc shadow call is dsiabled with 'return' at start of the function
 	// some mods used a hack with calling DrawShadow ahead of 'return'
@@ -2270,9 +2270,53 @@ GL_StudioDrawShadow
 
 ===============
 */
-static void GL_StudioDrawShadow( void )
+void GL_StudioDrawShadow( void )
 {
-	if( r_shadows.value )
+	// big hack for some other shadows hack.
+	void * s;
+	_asm
+	{
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		nop
+		pop ecx
+	}
+	if( true )
 	{
 		StudioDrawShadow( m_pStudioHeader, g_bonestransform );
 	}
@@ -2313,7 +2357,7 @@ void R_StudioRenderFinal( void )
 
 			GL_SetRenderMode( rendermode );
 			R_StudioDrawPoints();
-			GL_StudioDrawShadow();
+			//GL_StudioDrawShadow();
 		}
 	}
 
