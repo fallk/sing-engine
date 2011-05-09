@@ -823,9 +823,7 @@ void S_RenderFrame( ref_params_t *fd )
 
 	VectorCopy( fd->vieworg, s_listener.origin );
 	VectorCopy( fd->simvel, s_listener.velocity );
-	VectorCopy( fd->forward, s_listener.forward );
-	VectorCopy( fd->right, s_listener.right );
-	VectorCopy( fd->up, s_listener.up );
+	AngleVectors( fd->viewangles, s_listener.forward, s_listener.right, s_listener.up );
 
 	// update spatialization for static and dynamic sounds	
 	for( i = 0, ch = channels; i < total_channels; i++, ch++ )
