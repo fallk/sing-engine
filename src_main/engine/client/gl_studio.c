@@ -2273,9 +2273,9 @@ GL_StudioDrawShadow
 void GL_StudioDrawShadow( void )
 {
 	// big hack for some other shadows hack.
-	void * s;
 	_asm
 	{
+		push ecx
 		nop
 		nop
 		nop
@@ -2357,7 +2357,7 @@ void R_StudioRenderFinal( void )
 
 			GL_SetRenderMode( rendermode );
 			R_StudioDrawPoints();
-			//GL_StudioDrawShadow();
+			GL_StudioDrawShadow();
 		}
 	}
 
