@@ -1649,6 +1649,7 @@ Loads a model into the cache
 model_t *Mod_LoadModel( model_t *mod, qboolean crash )
 {
 	byte	*buf;
+	char	tempname[64];
 
 	if( !mod )
 	{
@@ -1661,12 +1662,17 @@ model_t *Mod_LoadModel( model_t *mod, qboolean crash )
 	if( mod->mempool || mod->name[0] == '*' )
 		return mod;
 
+	// store modelname to show error
+	Q_strncpy( tempname, mod->name, sizeof( tempname ));
+
 	buf = COM_LoadFile( mod->name, 0, NULL );
 	if( !buf )
 	{
-		if( crash ) Host_Error( "Mod_ForName: %s couldn't load\n", mod->name );
-		else MsgDev( D_ERROR, "Mod_ForName: %s couldn't load\n", mod->name );
 		Q_memset( mod, 0, sizeof( model_t ));
+
+		if( crash ) Host_Error( "Mod_ForName: %s couldn't load\n", tempname );
+		else MsgDev( D_ERROR, "Mod_ForName: %s couldn't load\n", tempname );
+
 		return NULL;
 	}
 
@@ -1697,8 +1703,9 @@ model_t *Mod_LoadModel( model_t *mod, qboolean crash )
 		Mod_FreeModel( mod );
 
 		// check for loading problems
-		if( crash ) Host_Error( "Mod_ForName: %s unknown format\n", mod->name );
-		else MsgDev( D_ERROR, "Mod_ForName: %s unknown format\n", mod->name );
+		if( crash ) Host_Error( "Mod_ForName: %s unknown format\n", tempname );
+		else MsgDev( D_ERROR, "Mod_ForName: %s unknown format\n", tempname );
+
 		return NULL;
 	}
 	return mod;
